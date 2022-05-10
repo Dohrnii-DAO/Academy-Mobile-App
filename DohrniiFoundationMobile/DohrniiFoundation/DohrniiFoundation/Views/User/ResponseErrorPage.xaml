@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+             x:Class="DohrniiFoundation.Views.ResponseErrorPage" BackgroundColor="{StaticResource WhiteText}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="44" Spacing="16">
+            <Image Source="Error" HeightRequest="126" WidthRequest="141"/>
+            <Label Text="{x:Static resource:DFResources.ErrorMessageText}" Opacity="10" Style="{StaticResource ErrorMessageLabelStyle}"></Label>
+            <Label Text="{x:Static resource:DFResources.CheckInternetText}"  Style="{StaticResource CheckInternetLabelStyle}"></Label>
+            <Frame Style="{StaticResource TryAgainFrameStyle}">
+                <Label Text="{x:Static resource:DFResources.TryAgainText}" Style="{StaticResource TryAgainLabelStyle}"></Label>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

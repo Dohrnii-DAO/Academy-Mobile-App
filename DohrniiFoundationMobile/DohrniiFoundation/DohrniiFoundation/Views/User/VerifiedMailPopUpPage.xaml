@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<page:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:page="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" 
+             xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:view="clr-namespace:DohrniiFoundation.Views" 
+             xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels"
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{StaticResource PopPageBackgroundColor}" 
+             InputTransparent="False"
+             x:Class="DohrniiFoundation.Views.User.VerifiedMailPopUpPage">
+    <ContentPage.BindingContext>
+        <vm:VerifiedMailViewModel/>
+    </ContentPage.BindingContext>
+    <page:PopupPage.Animation>
+        <animations:ScaleAnimation PositionIn="Center" PositionOut="Center"  
+            DurationIn="400" DurationOut="300" EasingIn="SinOut" EasingOut="SinIn" HasBackgroundAnimation="True" />
+    </page:PopupPage.Animation>
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
+        <Frame HasShadow="False" Margin="32" Style="{StaticResource VerifiedEmailStyle}">
+            <StackLayout VerticalOptions="FillAndExpand" Spacing="16" Margin="0,22,0,0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Image Source="{Binding Verified}" HeightRequest="60" WidthRequest="60" Style="{StaticResource AppIconImageStyle}"></Image>
+                <Label  Text="{x:Static resource:DFResources.SuccessfulText}" Margin="0,8,0,0" Style="{StaticResource LoginTitleLabelStyle}"></Label>
+                <Label Text="{x:Static resource:DFResources.QuestionnaireUpdatedSuccessfullyText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource EmailLabelStyle}"></Label>
+                <Button x:Name="OkButton" Text="{x:Static resource:DFResources.OKText}" Style="{StaticResource LoginButtonStyle}" VerticalOptions="EndAndExpand" Command="{Binding OKButtonCommand}" CommandParameter="{Binding .}"></Button>
+            </StackLayout>
+        </Frame>
+        <view:NoInternetView IsVisible="{Binding IsInternet}"></view:NoInternetView>
+    </Grid>
+</page:PopupPage>

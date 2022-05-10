@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resource ="clr-namespace:DohrniiFoundation.Resources"
+             xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Lessons"
+             xmlns:helper="clr-namespace:DohrniiFoundation.Helpers"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:cntrl="clr-namespace:DohrniiFoundation.Controls" 
+             xmlns:view="clr-namespace:DohrniiFoundation.Views" 
+             ios:Page.UseSafeArea="true"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource WhiteText}"
+             x:Class="DohrniiFoundation.Views.More.EditProfilePage">
+    <ContentPage.BindingContext>
+        <vm:EditProfileViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ImageButton Grid.Row="0" Margin="16" Source="{x:Static helper:StringConstant.BackArrow}" Command="{Binding BackCommand}" CommandParameter="{Binding .}" HeightRequest="25" WidthRequest="25" Style="{StaticResource BackButtonStyle}"/>
+            <Label Grid.Row="1" Text="{x:Static resource:DFResources.EditProfileText}" TextTransform="Uppercase" Style="{StaticResource WelcomeToDohrniiLabelStyle}"/>
+            <Frame Grid.Row="2" HorizontalOptions="Center" CornerRadius="57" IsClippedToBounds="True" BorderColor="Black" HeightRequest="114" WidthRequest="114" Padding="0" HasShadow="False">
+                <Image Aspect="AspectFill" BackgroundColor="{StaticResource WhiteText}" Source="{Binding ProfileImage}"/>
+            </Frame>
+            <Grid Grid.Row="2" Margin="50,0,0,0" VerticalOptions="EndAndExpand" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand">
+                <ImageButton Source="{x:Static helper:StringConstant.CameraIcon}" BackgroundColor="Transparent" Command="{Binding CameraCommand}" CommandParameter="{Binding .}"/>
+            </Grid>
+            <StackLayout Margin="40,8" Grid.Row="3" Spacing="14" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" Spacing="0">
+                <Label Text="{x:Static resource:DFResources.ChangeUserNameText}" FontSize="12" FontFamily="{StaticResource PoppinsRegular}" TextColor="{StaticResource BlackText}"/>
+                <Grid>
+                    <Frame x:Name="changeUserNameFrame" BorderColor="{Binding UserNameFrameBorderColor}" Style="{StaticResource FrameBlueStyle}"/>
+                        <cntrl:NoOutlineEntry x:Name="userNameEntry" TextChangedCommand="{Binding UserNameTextChangedCommand}" Margin="8,0,0,0" Placeholder="{x:Static resource:DFResources.UserNameText}" Text="{Binding UserName}" Style="{StaticResource EnterEmailEntryStyle}"/>
+                    <Image Source="{x:Static helper:StringConstant.UserIcon}" HeightRequest="12" WidthRequest="12" Style="{StaticResource LoginFieldsImageStyle}"/>
+                </Grid>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Spacing="0">
+                    <Label Text="{x:Static resource:DFResources.ChangePasswordText}" FontSize="12" FontFamily="{StaticResource PoppinsRegular}" TextColor="{StaticResource BlackText}"/>
+                    <Grid>
+                        <Frame x:Name="ChangePasswordFrame" BorderColor="{Binding ChangePasswordFrameBorderColor}" Style="{StaticResource FrameBlueStyle}"/>
+                        <cntrl:NoOutlineEntry x:Name="passwordEntry" IsPassword="True" Margin="8,0,0,0" Placeholder="{x:Static resource:DFResources.PasswordText}" TextChangedCommand="{Binding PasswordTextChangedCommand}" Text="{Binding Password}" Style="{StaticResource EnterEmailEntryStyle}"/>
+                        <Image Source="{x:Static helper:StringConstant.PasswordIcon}" HeightRequest="12" WidthRequest="12" Style="{StaticResource LoginFieldsImageStyle}"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Spacing="0">
+                    <Label Text="{x:Static resource:DFResources.WalletAddressText}" FontSize="12" FontFamily="{StaticResource PoppinsRegular}" TextColor="{StaticResource BlackText}"/>
+                    <Grid>
+                        <Frame x:Name="walletAddressFrame" Style="{StaticResource FrameBlueStyle}"/>
+                        <cntrl:NoOutlineEntry x:Name="walletAddressEntry" Margin="8,0,0,0" Placeholder="" Text="erdcdf45789jh65dcvASD456790XET79" FontSize="10" Style="{StaticResource EnterEmailEntryStyle}"/>
+                        <Frame Padding="2" Margin="4,0" HeightRequest="30" CornerRadius="6" HasShadow="False" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="{StaticResource LessonXPFirstColor}">
+                            <Label Text="{x:Static resource:DFResources.ConnectWalletText}" VerticalTextAlignment="Center" FontSize="10" TextColor="{StaticResource WhiteText}"/>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            <Frame HasShadow="False" Padding="0" HeightRequest="50" CornerRadius="5" Margin="40,16" Grid.Row="4" BackgroundColor="{StaticResource LessonXPFirstColor}">
+                <Label Text="{x:Static resource:DFResources.SaveText}" TextTransform="Uppercase" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource WhiteText}" FontSize="14" FontFamily="{StaticResource MonumentRegular}"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SaveCommand}" CommandParameter="{Binding .}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <view:Loader IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.RowSpan="6"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

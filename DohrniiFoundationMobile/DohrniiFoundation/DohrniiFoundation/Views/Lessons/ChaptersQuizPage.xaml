@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Lessons"
+             xmlns:view="clr-namespace:DohrniiFoundation.Views"
+             xmlns:helper="clr-namespace:DohrniiFoundation.Helpers"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+             x:Class="DohrniiFoundation.Views.Lessons.ChaptersQuizPage">
+    <ContentPage.BindingContext>
+        <vm:ClassQuizViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.RowSpan="2">
+                <Image Source="{x:Static helper:StringConstant.QuizBackgrondImage}"></Image>
+            </Grid>
+            <Grid Grid.Row="0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="70">
+                <ImageButton Margin="21,0,0,0" Source="{x:Static helper:StringConstant.BackArrow}" BackgroundColor="Transparent" HeightRequest="25" WidthRequest="25" HorizontalOptions="StartAndExpand" Command="{Binding BackCommand}" CommandParameter="{Binding .}"/>
+                <Label Text="{x:Static resource:DFResources.QuizText}" FontSize="17" FontFamily="{StaticResource MonumentRegular}" TextTransform="Uppercase" TextColor="{StaticResource BlackTextColor}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            </Grid>
+            <StackLayout Grid.Row="1" Margin="24,8,24,16" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <Label FontSize="14" FontFamily="{StaticResource MonumentRegular}" TextColor="{Binding QuestionNumberTextColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static resource:DFResources.QuestionText}"></Span>
+                                <Span Text=" "></Span>
+                                <Span Text="{Binding QuestionNumber}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <Grid Margin="-24,8,-34,0" HeightRequest="10" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="0">
+                    <FlexLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="8" BindableLayout.ItemsSource="{Binding QuestionsProgressBarList}" Direction="Row">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" WidthRequest="{Binding StackWidth}" Grid.ColumnSpan="2">
+                                    <Grid ColumnSpacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Grid.Column="0" HasShadow="False" Padding="0" BackgroundColor="{StaticResource LessonSegmentColor}" HeightRequest="3" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                            <BoxView HorizontalOptions="FillAndExpand"></BoxView>
+                                        </Frame>
+                                        <Frame Grid.Column="1" HasShadow="False" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BorderColor="{Binding ProgressBarFrameBorderColor}" BackgroundColor="{Binding ProgressBarFrameBgColor}" Padding="0" HeightRequest="10" WidthRequest="10" CornerRadius="5"></Frame>
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </Grid>
+                <StackLayout x:Name="QuestionsList" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ChapterQuizList}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Margin="0,18,0,0" Text="{Binding QuestionTitle}" FontSize="18" FontFamily="{StaticResource MonumentRegular}" TextColor="{StaticResource BlackTextColor}"/>
+                                <ScrollView VerticalScrollBarVisibility="Never">
+                                    <StackLayout Margin="0,16,0,0" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding QuizAnswers}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Frame x:Name="AnswerItem" Margin="8,6,8,6" MinimumHeightRequest="60" CornerRadius="16" HasShadow="False" Padding="2" BackgroundColor="{StaticResource WhiteText}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="15*"/>
+                                                                <ColumnDefinition Width="85*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Frame Grid.Column="0" HorizontalOptions="StartAndExpand" Padding="1" Margin="8,0,0,0" VerticalOptions="Center" HasShadow="False" CornerRadius="8" HeightRequest="16" WidthRequest="24" BorderColor="{Binding AnswerAlphabetBorderColor}" BackgroundColor="{Binding AlphabetFrameBgColor}">
+                                                                <Label Text="{Binding AnswerAlphabet}" HeightRequest="14" WidthRequest="18" TextColor="{Binding AnswerAlphabetTextColor}" FontSize="12" FontFamily="{StaticResource MonumentRegular}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                                            </Frame>
+                                                            <Label Margin="0,8,8,8" Grid.Column="1" Text="{Binding AnswerTitle}" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" TextColor="{Binding AnswerFrameTextColor}" FontSize="14" Opacity="0.6" FontFamily="{StaticResource PoppinsRegular}" />
+                                                        </Grid>
+                                                    </Frame>
+                                                    <Grid.GestureRecognizers>
+                                                        <TapGestureRecognizer BindingContext="{Binding Source={x:Reference QuestionsList}, Path=BindingContext}" Command="{Binding AnswerSelectedCommand}" CommandParameter="{Binding Source={x:Reference AnswerItem}, Path=BindingContext}"></TapGestureRecognizer>
+                                                    </Grid.GestureRecognizers>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Button Text="{Binding QuizTimer}" BackgroundColor="{StaticResource QuizRandomColor1}" Padding="0" CornerRadius="5" HeightRequest="47" TextColor="{StaticResource WhiteText}" FontSize="20" FontFamily="{StaticResource MonumentRegular}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/> 
+            </StackLayout>
+            <view:Loader Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}"></view:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:cntrl="clr-namespace:DohrniiFoundation.Controls"
+             x:Class="DohrniiFoundation.Views.User.SignUpPage"
+             xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.User"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:resource="clr-namespace:DohrniiFoundation.Resources" xmlns:view="clr-namespace:DohrniiFoundation.Views"
+             BackgroundColor="{StaticResource WhiteText}">
+    <ContentPage.BindingContext>
+        <vm:SignUpViewModel x:Name="SignUpVM"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="80*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Margin="0,0,0,0" Text="{x:Static resource:DFResources.WelcomeToDohnriiText}" VerticalOptions="EndAndExpand" Style="{StaticResource WelcomeToDohrniiLabelStyle}"></Label>
+            <ScrollView Margin="40,21,40,0" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                <Grid Grid.Row="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Text="Registar to use app" Style="{StaticResource SignInUseLabelStyle}"></Label>
+                    <StackLayout Grid.Row="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="32">
+                        <Grid>
+                            <Frame x:Name="EmailFrame" BorderColor="{Binding EmailFrameBorderColor}" Style="{StaticResource FrameBlueStyle}"/>
+                            <cntrl:NoOutlineEntry x:Name="emailEntry" Margin="8,0,0,0" Placeholder="E-mail" TextChangedCommand="{Binding EmailTextChangedCommand}" Text="{Binding Email}" Style="{StaticResource EnterEmailEntryStyle}"/>
+                            <Image Source="EmailIcon" HeightRequest="12" WidthRequest="12" Style="{StaticResource LoginFieldsImageStyle}"/>
+                        </Grid>
+                        <Grid>
+                            <Frame x:Name="UserNameFrame" BorderColor="{Binding UserNameFrameBorderColor}" Style="{StaticResource FrameBlueStyle}"/>
+                            <cntrl:NoOutlineEntry x:Name="userNameEntry" Margin="8,0,0,0" Placeholder="User Name" TextChangedCommand="{Binding UserNameTextChangedCommand}" Text="{Binding UserName}" Style="{StaticResource EnterEmailEntryStyle}"/>
+                            <Image Source="UserIcon" HeightRequest="12" WidthRequest="12" Style="{StaticResource LoginFieldsImageStyle}"/>
+                        </Grid>
+                        <Grid>
+                            <Frame x:Name="PasswordFrame" BorderColor="{Binding PasswordFrameBorderColor}" Style="{StaticResource FrameBlueStyle}"/>
+                            <cntrl:NoOutlineEntry x:Name="passwordEntry" Text="{Binding Password}" TextChangedCommand="{Binding PasswordTextChangedCommand}" Margin="8,0,0,0" IsPassword="{Binding IsPassword}" Placeholder="Password" PlaceholderColor="{StaticResource BlackText}" TextColor="{StaticResource BlackText}" HeightRequest="50" Opacity="0.4" FontSize="12" FontFamily="{StaticResource PoppinsRegular}"/>
+                            <Image Source="PasswordIcon" Style="{StaticResource LoginFieldsImageStyle}"/>
+                        </Grid>
+                        <Grid>
+                            <Frame x:Name="ConfirmPasswordFrame" BorderColor="{Binding ConfirmPasswordFrameBorderColor}" Style="{StaticResource FrameBlueStyle}"/>
+                            <cntrl:NoOutlineEntry x:Name="confirmPasswordmEntry" Text="{Binding ConfirmPassword}" TextChangedCommand="{Binding ConfirmPasswordTextChangedCommand}" Margin="8,0,0,0" IsPassword="{Binding IsPassword}" Placeholder="Confirm Password" PlaceholderColor="{StaticResource BlackText}" TextColor="{StaticResource BlackText}" HeightRequest="50" Opacity="0.4" FontSize="12" FontFamily="{StaticResource PoppinsRegular}"/>
+                            <Image Source="PasswordIcon" Style="{StaticResource LoginFieldsImageStyle}"/>
+                        </Grid>
+                    </StackLayout>
+                    <Grid Grid.Row="2" Margin="0,8,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="3">
+                            <Image HeightRequest="12" WidthRequest="12" Source="{Binding CheckBoxImage}" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CheckBoxCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Show Password" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Style="{StaticResource SignInUseLabelStyle}" Opacity="0.6"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Spacing="2">
+                            <Label Text="Have an account?" VerticalOptions="Center" Style="{StaticResource SignInUseLabelStyle}" Opacity="0.6"/>
+                            <Label Text="{x:Static resource:DFResources.SignInText}" VerticalOptions="Center" Style="{StaticResource ClickHereLabelStyle}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SignInCommand}" CommandParameter="{Binding .}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+                    <Button Grid.Row="3" Margin="0,8,0,0" Text="{x:Static resource:DFResources.SignUpText}"  Command="{Binding SignUpCommand}" CommandParameter="{Binding .}" Style="{StaticResource SignInButtonStyle}"></Button>
+                    <StackLayout Margin="0,22,0,0" Grid.Row="4" Orientation="Horizontal" Spacing="16" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <BoxView Style="{StaticResource SignInWithBoxViewStyle}"/>
+                        <Label Text="{x:Static resource:DFResources.SignWithText}" Style="{StaticResource OrSignWithLabelStyle}"/>
+                        <BoxView Style="{StaticResource SignInWithBoxViewStyle}"/>
+                    </StackLayout>
+                    <Grid Grid.Row="5" Margin="0,16,0,100" ColumnSpacing="44" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="33.3*"/>
+                            <ColumnDefinition Width="33.3*"/>
+                            <ColumnDefinition Width="33.3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Column="0" Style="{StaticResource FrameBlueStyle}" Padding="0">
+                            <Image Source="Google" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource FrameBlueStyle}" Padding="0">
+                            <Image Source="Fb" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                        </Frame>
+                        <Frame Grid.Column="2" WidthRequest="50" HeightRequest="50" Style="{StaticResource FrameBlueStyle}" Padding="0">
+                            <Image Source="Apple" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <view:Loader Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
+            <view:NoInternetView Grid.Row="1" VerticalOptions="EndAndExpand" IsVisible="{Binding IsInternet}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

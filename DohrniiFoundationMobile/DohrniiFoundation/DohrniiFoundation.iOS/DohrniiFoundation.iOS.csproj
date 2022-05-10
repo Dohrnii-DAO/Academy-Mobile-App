@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C33A3750-7523-4405-8FB3-B91113E50C47}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DohrniiFoundation.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>DohrniiFoundation.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>automatic</ProvisioningType>
+    <SccProjectName>%24/DohrniiFoundation-BLCH/DohrniiFoundationMobile/DohrniiFoundation/DohrniiFoundation.iOS</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>https://tfs01.chetu.com/tfs/chetuprojects</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignProvision>DohrniiFoundation_AdHoc</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Dohrnii Stiftung (RJWTX9QMFU)</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Distribution: Dohrnii Stiftung (RJWTX9QMFU)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+    <CodesignProvision>DohrniiFoundation_AdHoc</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderer\CustomEditorRenderer.cs" />
+    <Compile Include="Renderer\NoOutlineEntryRenderer.cs" />
+    <Compile Include="Renderer\TopTwoCornerFrameRenderer.cs" />
+    <None Include=".editorconfig" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\spalsh-1125X2436.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\spalsh-1242x2688.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_1242X2208-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_1536X2008-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_1536x2048.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_1536x2048-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_2048X2732-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_320x480-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_640x1136.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_640x1136-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_640x960.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_640x960-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_750X1334-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_768X1004-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_768X1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_768X1024-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\splash_828X1792-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\4040.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\6060.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\5858.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\8787.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\8080.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120120-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\180180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\2020.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\4040-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\2929.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\5858-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\4040-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\8080-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\7676.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\152152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\167167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\10241024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\1242X2688.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\828X1792.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\2688X1242.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\1792X828.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\1125X2436.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\1242X2208.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\2208X1242.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\2048X2732.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\640X960.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\640X1136.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\768X1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\1536X2048.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\1024X768.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\320X480.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\2048X1536.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\640X960-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\640X1136-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\768X1004.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\1536X2008.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\768X1024-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\1536X2048-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\2048X1496.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\1024X768-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\2048X1536-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\2436X1125.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchScreen.launchimage\750X1334.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Plugin.Permissions">
+      <Version>3.0.0.12</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>1.2.0.223</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>1.68.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>4.0.0.9</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="YoutubeExplode">
+      <Version>6.0.7</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\DohrniiFoundation\DohrniiFoundation.csproj">
+      <Project>{3151E847-180F-44DB-BD10-53B5D3700A9F}</Project>
+      <Name>DohrniiFoundation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\Applogo.imageset\" />
+    <Folder Include="Assets.xcassets\Dashboardbg.imageset\" />
+    <Folder Include="Assets.xcassets\LaunchScreen.appiconset\" />
+    <Folder Include="Assets.xcassets\LaunchScreen.imageset\" />
+    <Folder Include="Assets.xcassets\LaunchScreen.launchimage\" />
+    <Folder Include="Assets.xcassets\Loginbg.imageset\" />
+    <Folder Include="Assets.xcassets\Onboardbg.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\applogo.png" />
+    <BundleResource Include="Resources\Group_4780.png" />
+    <BundleResource Include="Resources\Group_4817.png" />
+    <BundleResource Include="Resources\Group_4824.png" />
+    <BundleResource Include="Resources\Account.png" />
+    <BundleResource Include="Resources\AppIcon.png" />
+    <BundleResource Include="Resources\AppIconImage.png" />
+    <BundleResource Include="Resources\back.png" />
+    <BundleResource Include="Resources\Bitcoin.png" />
+    <BundleResource Include="Resources\Dashboardheader.png" />
+    <BundleResource Include="Resources\Dashboardheaderimg.png" />
+    <BundleResource Include="Resources\Dashboardinvest.png" />
+    <BundleResource Include="Resources\Dashboardinvestimg.png" />
+    <BundleResource Include="Resources\Dashboardlearn.png" />
+    <BundleResource Include="Resources\Dashboardlearnimg.png" />
+    <BundleResource Include="Resources\dropdown.png" />
+    <BundleResource Include="Resources\dropup.png" />
+    <BundleResource Include="Resources\Earned.png" />
+    <BundleResource Include="Resources\emailverify.png" />
+    <BundleResource Include="Resources\Error.png" />
+    <BundleResource Include="Resources\eye_cut.png" />
+    <BundleResource Include="Resources\eye.png" />
+    <BundleResource Include="Resources\Facebook.png" />
+    <BundleResource Include="Resources\Hamburger.png" />
+    <BundleResource Include="Resources\HomeProgressIcon.png" />
+    <BundleResource Include="Resources\HomeTabSelected.png" />
+    <BundleResource Include="Resources\HomeTabUnselected.png" />
+    <BundleResource Include="Resources\Horizon.png" />
+    <BundleResource Include="Resources\Insta.png" />
+    <BundleResource Include="Resources\InvestorTabSelected.png" />
+    <BundleResource Include="Resources\InvestorTabUnselected.png" />
+    <BundleResource Include="Resources\Learn.png" />
+    <BundleResource Include="Resources\Lesson_Image.png" />
+    <BundleResource Include="Resources\Lesson_Text.png" />
+    <BundleResource Include="Resources\Lesson_Video.png" />
+    <BundleResource Include="Resources\LessonTextTick.png" />
+    <BundleResource Include="Resources\LessonVideoTick.png" />
+    <BundleResource Include="Resources\Loader.gif" />
+    <BundleResource Include="Resources\lock.png" />
+    <BundleResource Include="Resources\LongTermNext.png" />
+    <BundleResource Include="Resources\mail.png" />
+    <BundleResource Include="Resources\menuheader.png" />
+    <BundleResource Include="Resources\MenuHome.png" />
+    <BundleResource Include="Resources\NextLesson.png" />
+    <BundleResource Include="Resources\PleaseComplete.png" />
+    <BundleResource Include="Resources\SelectedAccount.png" />
+    <BundleResource Include="Resources\Selectedimg.png" />
+    <BundleResource Include="Resources\SelectedLearn.png" />
+    <BundleResource Include="Resources\SelectedSettings.png" />
+    <BundleResource Include="Resources\SelecteHome.png" />
+    <BundleResource Include="Resources\Settings.png" />
+    <BundleResource Include="Resources\Splash.gif" />
+    <BundleResource Include="Resources\Splash1.png" />
+    <BundleResource Include="Resources\StrategiesTabSelected.png" />
+    <BundleResource Include="Resources\StrategiesTabUnselected.png" />
+    <BundleResource Include="Resources\Twitter.png" />
+    <BundleResource Include="Resources\Unselectedimg.png" />
+    <BundleResource Include="Resources\Verified.png" />
+    <BundleResource Include="Resources\SplashVideo.mp4" />
+    <BundleResource Include="Resources\Cancel.png" />
+    <BundleResource Include="Resources\Collapse.png" />
+    <BundleResource Include="Resources\Expand.png" />
+    <BundleResource Include="Resources\LongTermConcept1.png" />
+    <BundleResource Include="Resources\LongTermConcept2.png" />
+    <BundleResource Include="Resources\LongTermConcept3.png" />
+    <BundleResource Include="Resources\LongTermConcept5.png" />
+    <BundleResource Include="Resources\StrategiesDetailImage.png" />
+    <BundleResource Include="Resources\StrategiesDetailText.png" />
+    <BundleResource Include="Resources\StrategiesDetailVideo.png" />
+    <BundleResource Include="Resources\AnswerSelected.png" />
+    <BundleResource Include="Resources\EditIcon.png" />
+    <BundleResource Include="Resources\Dashboardbg.png" />
+    <BundleResource Include="Resources\Onboardbg.png" />
+    <BundleResource Include="Resources\Loginbg.png" />
+    <BundleResource Include="Resources\LessonLock.png" />
+    <BundleResource Include="Resources\LessonsBg.png" />
+    <BundleResource Include="Resources\ArrowUp.png" />
+    <BundleResource Include="Resources\ChaptersBg.png" />
+    <BundleResource Include="Resources\Jellyfish.png" />
+    <BundleResource Include="Resources\InvestorArrow.png" />
+    <BundleResource Include="Resources\RetakeImage.png" />
+    <BundleResource Include="Resources\Fb.png" />
+    <BundleResource Include="Resources\Apple.png" />
+    <BundleResource Include="Resources\Google.png" />
+    <BundleResource Include="Resources\MoreUnselected.png" />
+    <BundleResource Include="Resources\MoreSelected.png" />
+    <BundleResource Include="Resources\BackArrow.png" />
+    <BundleResource Include="Resources\LockIcon.png" />
+    <BundleResource Include="Resources\FingerPrint.png" />
+    <BundleResource Include="Resources\FaqIcon.png" />
+    <BundleResource Include="Resources\HeadphonesIcon.png" />
+    <BundleResource Include="Resources\PolicyIcon.png" />
+    <BundleResource Include="Resources\PassedTick.png" />
+    <BundleResource Include="Resources\BottomXPJellyfish.png" />
+    <BundleResource Include="Resources\OnboardingDhnJellyfish.png" />
+    <BundleResource Include="Resources\OnboardingCryptoJellyfish.png" />
+    <BundleResource Include="Resources\OnboardingXPJellyfish.png" />
+    <BundleResource Include="Resources\OnboardingJellyfish.png" />
+    <BundleResource Include="Resources\EmailIcon.png" />
+    <BundleResource Include="Resources\PasswordIcon.png" />
+    <BundleResource Include="Resources\LessonsTick.png" />
+    <BundleResource Include="Resources\Locked.png" />
+    <BundleResource Include="Resources\ClassCompletedFish.png" />
+    <BundleResource Include="Resources\ClassComplete.gif" />
+    <BundleResource Include="Resources\CameraIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Thumb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CheckBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\UncheckBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\NextIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EditProfileIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\UserIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LoaderNew.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LessonsTabSelected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LessonsTabUnselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\QuizCompleteJelly.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ClassCompleteJelly4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ClassCompleteJelly3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ClassCompleteJelly2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ClassCompleteJelly1.png" />
+  </ItemGroup>
+</Project>

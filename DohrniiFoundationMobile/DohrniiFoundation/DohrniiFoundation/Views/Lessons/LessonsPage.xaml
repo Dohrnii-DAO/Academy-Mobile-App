@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:view="clr-namespace:DohrniiFoundation.Views"
+             xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+             xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Lessons"
+             x:Class="DohrniiFoundation.Views.Lessons.LessonsPage"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:controls="clr-namespace:DohrniiFoundation.Controls"
+             ios:Page.UseSafeArea="False"
+             BackgroundColor="{StaticResource LessonBgColor}">
+    <ContentPage.BindingContext>
+        <vm:LessonsViewModel x:Name="lessonsVM"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image Source="{Binding LessonsBg}" Style="{StaticResource LessonBgImageStyle}"/>
+            </StackLayout>
+            <Grid Margin="0,20,0,0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="{x:Static resource:DFResources.ModulesText}" Style="{StaticResource LessonHeaderTextStyle}"/>
+                <Frame Grid.Row="1" HasShadow="False" Margin="0,25,4,0" Padding="0" HeightRequest="40" BackgroundColor="Transparent">
+                    <CollectionView x:Name="CategoryList" Grid.Row="0" ItemsSource="{Binding ChaptersCategoryList}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout x:Name="LessonsList" Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Frame HasShadow="False" Margin="16,0,4,0" Padding="0" IsVisible="{Binding IsNotGrdientVisible}" BackgroundColor="{StaticResource WhiteText}" CornerRadius="5">
+                                        <Label Text="{Binding CategoryName}" Padding="12" FontSize="10" FontFamily="{StaticResource PoppinsRegular}" VerticalTextAlignment="Center" TextColor="{StaticResource SegmentControlTextColor}"/>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" BindingContext="{Binding Source={x:Reference CategoryList}, Path=BindingContext}" Command="{Binding CategoriesSelectedCommand}" CommandParameter="{Binding Source={x:Reference LessonsList}, Path=BindingContext}"/>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                    <pancake:PancakeView HasShadow="False" Padding="0" CornerRadius="5" Margin="16,0,0,0" IsVisible="{Binding IsGradientVisible}" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                                       <pancake:PancakeView.BackgroundGradientStops>
+                                          <pancake:GradientStopCollection>
+                                             <pancake:GradientStop Color="{StaticResource SegmentBGColor1}" Offset="0" />
+                                             <pancake:GradientStop Color="{StaticResource SegmentBGColor2}" Offset="0.5" />
+                                          </pancake:GradientStopCollection>
+                                       </pancake:PancakeView.BackgroundGradientStops>
+                                        <Label Text="{Binding CategoryName}" Padding="13" TextColor="{StaticResource WhiteText}" BackgroundColor="Transparent" VerticalOptions="Center" FontSize="10" FontFamily="{StaticResource PoppinsRegular}"></Label>
+                                    </pancake:PancakeView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+                <ScrollView HorizontalScrollBarVisibility="Never" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Frame Padding="0" CornerRadius="16" Margin="16" BackgroundColor="{StaticResource WhiteText}" HasShadow="False">
+                            <Grid Margin="16" RowSpacing="0" ColumnSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{x:Static resource:DFResources.ProgressText}" Style="{StaticResource LessonsProgressTextStyle}"/>
+                                <Grid Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80*"/>
+                                        <ColumnDefinition Width="20*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding ChapterProgressPercentage}" HorizontalOptions="FillAndExpand" Style="{StaticResource LessonProgressTextStyle}"></Label>
+                                    <Label Grid.Column="1" Text="{x:Static resource:DFResources.CourseText}" HorizontalOptions="EndAndExpand" Style="{StaticResource LessonProgressTextStyle}"></Label>
+                                </Grid>
+                                <controls:GradientProgressBar Grid.Row="2" HeightRequest="8" BarBackgroundColor="{StaticResource ProgressBarBgColor}" CornerRadius="4" Percentage="{Binding ChapterProgress}" GradientStartColor="{StaticResource LessonContinueFirstColor}" GradientEndColor="{StaticResource LessonXPFirstColor}" />
+
+                                <Grid Grid.Row="3" Margin="0,27,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="33.3*"/>
+                                        <ColumnDefinition Width="33.3*"/>
+                                        <ColumnDefinition Width="33.3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout HeightRequest="110" Grid.Column="0">
+                                        <pancake:PancakeView Padding="0" HasShadow="False" CornerRadius="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                                            <pancake:PancakeView.BackgroundGradientStops>
+                                                <pancake:GradientStopCollection>
+                                                    <pancake:GradientStop Color="{StaticResource LessonXPFirstColor}" Offset="0" />
+                                                    <pancake:GradientStop Color="{StaticResource LessonXPSecondColor}" Offset="0.5" />
+                                                </pancake:GradientStopCollection>
+                                            </pancake:PancakeView.BackgroundGradientStops>
+                                            <StackLayout Grid.Row="0" Grid.RowSpan="2" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <Label Text="{Binding TotalXP,Mode=TwoWay,StringFormat='{0:#,0}'}" Style="{StaticResource LessonXPValueStyle}" Margin="0,16,0,0"></Label>
+                                                <Frame VerticalOptions="EndAndExpand" Style="{StaticResource XPTextFrame}" HasShadow="False" BorderColor="{StaticResource LessonXPSecondColor}">
+                                                    <Label Text="{x:Static resource:DFResources.XPText}" Style="{StaticResource LessonXPTextStyle}"></Label>
+                                                </Frame>
+                                            </StackLayout>
+                                            <pancake:PancakeView.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding XPCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                            </pancake:PancakeView.GestureRecognizers>
+                                        </pancake:PancakeView>
+                                    </StackLayout>
+                                    <StackLayout HeightRequest="110" Grid.Column="1">
+                                        <pancake:PancakeView  Padding="0" HasShadow="False" CornerRadius="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                                            <pancake:PancakeView.BackgroundGradientStops>
+                                                <pancake:GradientStopCollection>
+                                                    <pancake:GradientStop Color="{StaticResource LessonJellyFirstColor}" Offset="0" />
+                                                    <pancake:GradientStop Color="{StaticResource LessonXPFirstColor}" Offset="0.5" />
+                                                </pancake:GradientStopCollection>
+                                            </pancake:PancakeView.BackgroundGradientStops>
+                                            <StackLayout Grid.Row="0" Grid.RowSpan="2" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <Label Text="{Binding TotalCryptoJelly,Mode=TwoWay,StringFormat='{0:#,0}'}" Style="{StaticResource LessonXPValueStyle}" Margin="0,16,0,0"></Label>
+                                                <Frame Grid.Row="1" BorderColor="{StaticResource LessonXPFirstColor}" HasShadow="False" Style="{StaticResource XPTextFrame}">
+                                                    <Label Text="{x:Static resource:DFResources.CryptoJellyText}" Style="{StaticResource LessonJellyTextStyle}"></Label>
+                                                </Frame>
+                                            </StackLayout>
+                                            <pancake:PancakeView.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding JellyfishCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                            </pancake:PancakeView.GestureRecognizers>
+                                        </pancake:PancakeView>
+                                    </StackLayout>
+                                    <StackLayout HeightRequest="110" Grid.Column="2">
+                                        <pancake:PancakeView  Padding="0" HasShadow="False" CornerRadius="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                                            <pancake:PancakeView.BackgroundGradientStops>
+                                                <pancake:GradientStopCollection>
+                                                    <pancake:GradientStop Color="{StaticResource LessonXPSecondColor}" Offset="0" />
+                                                    <pancake:GradientStop Color="{StaticResource LessonJellyFirstColor}" Offset="0.5" />
+                                                </pancake:GradientStopCollection>
+                                            </pancake:PancakeView.BackgroundGradientStops>
+                                            <StackLayout Grid.Row="0" Grid.RowSpan="2" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <Label Text="{Binding TotalDHN,Mode=TwoWay,StringFormat='{0:#,0.#0}'}" Style="{StaticResource LessonXPValueStyle}" Margin="0,16,0,0"></Label>
+                                                <Frame Grid.Row="1" BorderColor="{StaticResource LessonJellyFirstColor}" HasShadow="False" Style="{StaticResource XPTextFrame}">
+                                                    <Label Text="{x:Static resource:DFResources.DHNText}" Style="{StaticResource LessonDHNTextStyle}"></Label>
+                                                </Frame>
+                                            </StackLayout>
+                                            <pancake:PancakeView.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding DHNCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                            </pancake:PancakeView.GestureRecognizers>
+                                        </pancake:PancakeView>
+                                    </StackLayout>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                        <pancake:PancakeView HeightRequest="210" Padding="0" HasShadow="False" Margin="16,0,16,0" CornerRadius="16" BackgroundColor="{StaticResource LessonXPFirstColor}" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+                                       <pancake:PancakeView.BackgroundGradientStops>
+                                          <pancake:GradientStopCollection>
+                                             <pancake:GradientStop Color="{StaticResource LessonContinueFirstColor}" Offset="0" />
+                                             <pancake:GradientStop Color="{StaticResource LessonXPFirstColor}" Offset="0.5" />
+                                          </pancake:GradientStopCollection>
+                                       </pancake:PancakeView.BackgroundGradientStops>
+                                        <Grid RowSpacing="0" ColumnSpacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60*"/>
+                                    <ColumnDefinition Width="40*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Margin="16,16,0,0" Grid.Row="0" Grid.Column="0" Text="{x:Static resource:DFResources.ContinueLessonText}" Style="{StaticResource ContinueLessonTextStyle}"/>
+                                <Image Grid.Column="1" Margin="0,-8,0,0" Source="{Binding Jellyfish}" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand"></Image>
+                                <Label Margin="16,-8,0,16" Text="{Binding LessonContinueName}" Style="{StaticResource NatureScopeTextStyle}" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                <Frame Padding="0" Margin="16,0,16,16" CornerRadius="8" Grid.Column="0" HasShadow="False" HeightRequest="48" Grid.ColumnSpan="2" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Label TextColor="{StaticResource LessonXPFirstColor}" Text="{x:Static resource:DFResources.ContinueLessonText}" Style="{StaticResource ContinueLessonCapsTextStyle}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ContinueChapterCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Frame>
+                            </Grid>
+                            </pancake:PancakeView>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+            <view:TabbedView VerticalOptions="EndAndExpand"/>
+            <view:NoInternetView IsVisible="{Binding IsInternet}"/>
+            <view:Loader IsVisible="{Binding IsLoading}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

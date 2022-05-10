@@ -1,0 +1,729 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:cntrl="clr-namespace:DohrniiFoundation.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DohrniiFoundation.App">
+    <Application.Resources>
+
+        <!-- Define FontFamily-->
+        <OnPlatform x:TypeArguments="x:String" x:Key="Futur">
+            <On Platform="Android" Value="futur.ttf#Futur" />
+            <On Platform="iOS" Value="futur" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="Bold">
+            <On Platform="Android" Value="Futura Bold font.ttf#Bold" />
+            <On Platform="iOS" Value="Futura Bold font" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="Book">
+            <On Platform="Android" Value="Futura Book font.ttf#Book" />
+            <On Platform="iOS" Value="Futura Book font" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="PTDemi">
+            <On Platform="Android" Value="FuturaPTDemi.otf#PTDemi" />
+            <On Platform="iOS" Value="FuturaPTDemi" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="PTBook">
+            <On Platform="Android" Value="FuturaPTBook.otf#PTBook" />
+            <On Platform="iOS" Value="FuturaPTBook"/>
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="BTMedium">
+            <On Platform="Android" Value="FuturaMediumBT.ttf#BTMedium" />
+            <On Platform="iOS" Value="FuturaMediumBT"/>
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="MonumentRegular">
+            <On Platform="Android" Value="MonumentExtended-Regular.otf#MonumentExtendedRegular" />
+            <On Platform="iOS" Value="MonumentExtended-Regular"/>
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsRegular">
+            <On Platform="Android" Value="Poppins-Regular.ttf#PoppinsRegular" />
+            <On Platform="iOS" Value="Poppins-Regular"/>
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsSemiBold">
+            <On Platform="Android" Value="Poppins-SemiBold.ttf#PoppinsSemiBold" />
+            <On Platform="iOS" Value="Poppins-SemiBold"/>
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsMedium500">
+            <On Platform="Android" Value="Poppins-Medium.ttf#PoppinsMedium500" />
+            <On Platform="iOS" Value="Poppins-Medium"/>
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsLightItalic300">
+            <On Platform="Android" Value="Poppins-LightItalic.ttf#PoppinsLightItalic300" />
+            <On Platform="iOS" Value="Poppins-LightItalic"/>
+        </OnPlatform>
+        
+        <ControlTemplate x:Key="HeaderTemplateWithHamburger">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="Dashboardbg" Grid.Row="0" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+            <Grid VerticalOptions="Start" Grid.Row="0" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Padding="0" Margin="16" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0" >
+                    <ImageButton x:Name="Hamburger" Source="Hamburger" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" HorizontalOptions="StartAndExpand"
+                    Command="{TemplateBinding BindingContext.MenuCommand}" CommandParameter="1"/>
+                    <Label Text="{TemplateBinding BindingContext.PageTitle}" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource HeaderTextStyle}"></Label>
+                </Grid>
+                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                    <ContentPresenter/>
+                </StackLayout>
+            </Grid>
+                </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="HeaderTemplateWithoutIcon">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="Dashboardbg" Grid.Row="0" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+                <Grid VerticalOptions="Start" Grid.Row="0" RowSpacing="0" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Padding="0" Margin="16" HeightRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0" >
+                        <Label Text="{TemplateBinding BindingContext.PageTitle}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource HeaderTextStyle}"></Label>
+                    </Grid>
+                    <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                        <ContentPresenter/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="HeaderTemplateWithBack">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="Dashboardbg" Grid.Row="0" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="90*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Padding="0" Margin="16" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0" >
+                        <ImageButton x:Name="Back" Source="back" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" HorizontalOptions="StartAndExpand"
+                    Command="{TemplateBinding BindingContext.BackCommand}" CommandParameter="1"/>
+                        <Label Text="{TemplateBinding BindingContext.PageTitle}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource HeaderTextStyle}"></Label>
+                    </Grid>
+                    <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                        <ContentPresenter/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+
+        <!-- Define colors-->
+        <Color x:Key="BgColor">#f7f7f7</Color>        
+        <Color x:Key="LightGrayText">#A8A8A8</Color>
+        <Color x:Key="DarkGrayText">#1A1A1A</Color>
+        <Color x:Key="BlackText">#000000</Color>
+        <Color x:Key="LightBluishColor">#36C0BE</Color>
+        <Color x:Key="BluishColor">#04AEAF</Color>
+        <Color x:Key="WhiteText">#FFFFFF</Color>
+        <Color x:Key="RedText">#FF0000</Color>
+        <Color x:Key="FacebookColor">#4768AD</Color>
+        <Color x:Key="TextColor">#0F253E</Color>
+        <Color x:Key="PopPageBackgroundColor">#80000000</Color>
+        <Color x:Key="GrayTextColor">#9B9B9B</Color>
+        <Color x:Key="ErrorMessageColor">#151C5A</Color>
+        <Color x:Key="SideMenuSelectedColor">#73BFD0</Color>
+        <Color x:Key="LightYellowColor">#FEE8AC</Color>
+        <Color x:Key="LightYellowishColor">#FFF9ED</Color>
+        <Color x:Key="LightYellowBgColor">#EEFFEB</Color>        
+        <Color x:Key="LightPinkColor">#F7C6BD</Color>
+        <Color x:Key="LightPinkishColor">#FAE9E6</Color>
+        <Color x:Key="LightGreenColor">#D5F8CD</Color>
+        <Color x:Key="LightYellowBorderColor">#F6DC77</Color>
+        <Color x:Key="LightSkyColor">#F1F9FA</Color>
+        <Color x:Key="LightGreenishColor">#EEF8F2</Color>
+        <Color x:Key="GreenishColor">#D0ECCC</Color>
+        <Color x:Key="DisabledBluishColor">#ADDBDB</Color>
+        <Color x:Key="GreenColor">#ABDF9C</Color>
+        <Color x:Key="BlackTextColor">#070707</Color>
+        <Color x:Key="LessonGrayTextColor">#909090</Color>
+        <Color x:Key="LessonXPFirstColor">#7892FD</Color>
+        <Color x:Key="LessonXPSecondColor">#A1E9FD</Color>
+        <Color x:Key="LessonJellyFirstColor">#FFB8A3</Color>
+        <Color x:Key="LessonContinueFirstColor">#A4E5FD</Color>
+        <Color x:Key="LessonLockedGrayColor">#BDBDBD</Color>
+        <Color x:Key="LessonBgColor">#F5F5F5</Color>
+        <Color x:Key="LessonSegmentColor">#E0E0E0</Color>
+        <Color x:Key="ProgressBarBgColor">#EEEEEE</Color>
+        <Color x:Key="SegmentControlTextColor">#3E10FA</Color>
+        <Color x:Key="LessonsDetailBgColor">#100F0F</Color>
+        <Color x:Key="QuestionWrongRedColor">#D64D75</Color>
+        <Color x:Key="QuestionCorrectGreenColor">#81C784</Color>
+        <Color x:Key="CompletedClassBGColor1">#9CE8FB</Color>
+        <Color x:Key="CompletedClassBGColor2">#8DB0F6</Color>
+        <Color x:Key="CompletedClassBGColor3">#3D5BDD</Color>
+        <Color x:Key="SegmentBGColor1">#561BFF</Color>
+        <Color x:Key="SegmentBGColor2">#9C15DC</Color>
+        <Color x:Key="ConvertJellyBtnBgColor">#FFB7A3</Color>
+        <Color x:Key="UnlockQuizBgColor1">#8D45E8</Color>
+        <Color x:Key="UnlockQuizBgColor2">#38066A</Color>
+        <Color x:Key="CompletedQuizBgColor1">#707070</Color>
+        <Color x:Key="CompletedQuizBgColor2">#A7A5A7</Color>
+        <Color x:Key="CompletedQuizBgColor3">#716E71</Color>
+        <Color x:Key="CompletedQuizBgColor4">#D5CED6</Color>
+        <Color x:Key="CompletedQuizBgColor5">#656165</Color>
+        <Color x:Key="RewardDHNBgColor1">#DE50F1</Color>
+        <Color x:Key="RewardDHNBgColor2">#F881FA</Color>
+        <Color x:Key="QuizLockedBgColor1">#BA58C1</Color>
+        <Color x:Key="QuizLockedBgColor2">#D118EA</Color>
+        <Color x:Key="DHNcompletedBgColor">#F185C6</Color>
+        <Color x:Key="DHNcompletedFrameBgColor">#696FFA</Color>
+        <Color x:Key="ConnectWalletBgColor">#7993FE</Color>
+        <Color x:Key="JoinCommunityBgColor">#8EC0FE</Color>
+        <Color x:Key="InviteBgColor">#FFB9A3</Color>
+        <Color x:Key="ClassRandomColor1">#FFB6A3</Color>
+        <Color x:Key="ClassRandomColor2">#E66884</Color>
+        <Color x:Key="ClassRandomColor3">#1414C5</Color>
+        <Color x:Key="ClassRandomColor4">#3D61F8</Color>
+        <Color x:Key="ClassRandomColor5">#FFB4A2</Color>
+        <Color x:Key="ClassRandomColor6">#E76985</Color>
+        <Color x:Key="ClassRandomColor7">#DA78FD</Color>
+        <Color x:Key="QuizRandomColor1">#F94B7D</Color>
+
+        
+        <!-- Style for label -->
+        <Style TargetType="Label" x:Key="IntroLabelStyle">
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="TextColor" Value="{StaticResource BluishColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+            <Setter Property="FontSize">
+                <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="18"/>
+            </Setter>
+        </Style>
+        <Style TargetType="Label" x:Key="IntroContentLabelStyle">
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="Opacity" Value="0.8"/>
+            <Setter Property="FontSize">
+                <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="18"/>
+            </Setter>
+        </Style>
+        <Style TargetType="Label" x:Key="EmailLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource LightGrayText}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource WhiteText}" />
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="FontSize">
+                <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="14"/>
+            </Setter>
+        </Style>
+        <Style TargetType="Label" x:Key="SignInUseLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource BlackText}" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}" />
+        </Style>
+        <Style TargetType="Label" x:Key="ClickHereLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource LessonXPFirstColor}" />
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}" />
+        </Style>
+        <Style TargetType="Label" x:Key="VerifyMailLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource GrayTextColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource WhiteText}" />
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="FontSize">
+                <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="14"/>
+            </Setter>
+        </Style>
+        <Style TargetType="Label" x:Key="LoginTitleLabelStyle">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="HeightRequest" Value="27" />
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize">
+                <OnIdiom x:TypeArguments="x:Double" Phone="20" Tablet="20"/>
+            </Setter>
+        </Style>
+        <Style TargetType="Label" x:Key="RememberLabelStyle">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+        <Style TargetType="Label" x:Key="SignWithLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource BlackText}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="OrSignWithLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource BlackText}" />
+            <Setter Property="Opacity" Value="0.6" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="AccountLabelStyle">
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="{StaticResource BlackText}" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="SignTextLabelStyle">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource LightBluishColor}"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="ForgotPasswordTitleLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource BluishColor}" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="EnterEmailLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+            <Setter Property="Opacity" Value="0.8"/>
+        </Style>
+        <Style TargetType="Label" x:Key="ErrorMessageLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource ErrorMessageColor}" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="CheckInternetLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource GrayTextColor}" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="SideMenuLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LoadingLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource WhiteText}" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="NoInternetLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource WhiteText}" />
+            <Setter Property="VerticalTextAlignment" Value="End" />
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Label" x:Key="TryAgainLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LoremIpsumStyle">
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="{StaticResource BluishColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LoremIpsumSecondStyle">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LoremIpsumDescStyle">
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LearnTextStyle">
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="HeaderTextStyle">
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LessonHeaderTextStyle">
+            <Setter Property="TextTransform" Value="Uppercase" />
+            <Setter Property="Margin" Value="16,24,16,0" />
+            <Setter Property="VerticalOptions" Value="Start"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="TextColor" Value="{StaticResource BlackTextColor}"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LessonProgressTextStyle">
+            <Setter Property="TextColor" Value="{StaticResource LessonGrayTextColor}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+            <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>         
+        </Style>
+        <Style TargetType="Label" x:Key="LessonXPValueStyle">
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="TextColor" Value="{StaticResource WhiteText}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LessonXPTextStyle">
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="TextColor" Value="{StaticResource LessonXPSecondColor}"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LessonJellyTextStyle">
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="TextColor" Value="{StaticResource LessonXPFirstColor}"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LessonDHNTextStyle">
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="TextColor" Value="{StaticResource LessonJellyFirstColor}"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="ContinueLessonTextStyle">
+            <Setter Property="TextColor" Value="{StaticResource WhiteText}"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="NatureScopeTextStyle">
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="TextTransform" Value="Uppercase"/>
+            <Setter Property="TextColor" Value="{StaticResource WhiteText}"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="ContinueLessonCapsTextStyle">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="TextTransform" Value="Uppercase"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource WhiteText}"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="ChaptersTextStyle">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <Setter Property="TextTransform" Value="Uppercase"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="TextColor" Value="{StaticResource BlackTextColor}"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="WelcomeToDohrniiLabelStyle">
+            <Setter Property="TextTransform" Value="Uppercase"/>
+            <Setter Property="TextColor" Value="{StaticResource BlackText}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LessonsProgressTextStyle">
+            <Setter Property="TextTransform" Value="Uppercase"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="TextColor" Value="{StaticResource BlackTextColor}"/>
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="TabbedLabelStyle">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+        </Style>
+        <!-- Style for image -->
+        <Style TargetType="Image" x:Key="IntroImageStyle">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="StartAndExpand" />
+            <Setter Property="WidthRequest" Value="200"/>
+            <Setter Property="HeightRequest" Value="200" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="Aspect" Value="AspectFit" />
+        </Style>
+        <Style TargetType="Image" x:Key="AppIconImageStyle">
+            <Setter Property="Aspect" Value="AspectFit" />
+            <Setter Property="HeightRequest" Value="45" />
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        <Style TargetType="Image" x:Key="MailImageStyle">
+            <Setter Property="HeightRequest" Value="120" />
+            <Setter Property="WidthRequest" Value="120"/>
+        </Style>
+        <Style TargetType="Image" x:Key="AppLogoImageStyle">
+            <Setter Property="Aspect" Value="AspectFit" />
+            <Setter Property="WidthRequest" Value="45" />
+            <Setter Property="HeightRequest" Value="36"/>
+        </Style>
+        <Style TargetType="Image" x:Key="SideMenuImageStyle">
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="WidthRequest" Value="20" />
+            <Setter Property="HeightRequest" Value="20"/>
+        </Style>
+        <Style TargetType="Image" x:Key="LessonBgImageStyle">
+            <Setter Property="Aspect" Value="Fill" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        </Style>
+        <Style TargetType="Image" x:Key="LoginFieldsImageStyle">
+            <Setter Property="Margin" Value="0,0,16,0" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+            <Setter Property="HeightRequest" Value="15"/>
+            <Setter Property="WidthRequest" Value="15"/>
+        </Style>
+        <Style TargetType="Image" x:Key="TabbedImageStyle">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="0,6,0,0"/>
+            <Setter Property="HeightRequest" Value="18"/>
+            <Setter Property="WidthRequest" Value="18"/>
+        </Style>
+        <!-- Style for Indicator -->
+        <Style TargetType="IndicatorView" x:Key="IndicatorStyle">
+            <Setter Property="IndicatorSize" Value="7" />
+            <Setter Property="IndicatorsShape" Value="Circle" />
+            <Setter Property="IndicatorColor" Value="{StaticResource LightGrayText}"/>
+            <Setter Property="SelectedIndicatorColor" Value="{StaticResource BluishColor}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <!-- Style for LowercaseButton -->
+        <Style TargetType="Button" x:Key="PreviousButtonStyle">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="VerticalOptions" Value="End"/>
+            <Setter Property="HorizontalOptions" Value="Start" />
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="WidthRequest" Value="110" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+        <Style TargetType="Button" x:Key="NextButtonStyle">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="VerticalOptions" Value="End"/>
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+        </Style>
+        <Style TargetType="Button" x:Key="SkipButtonStyle">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="VerticalOptions" Value="Start"/>
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ForgotPasswordButtonStyle">
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource LightBluishColor}"/>
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+        </Style>
+        <Style TargetType="Button" x:Key="LoginButtonStyle">
+            <Setter Property="HeightRequest" Value="55" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="BackgroundColor" Value="{StaticResource LightBluishColor}" />
+            <Setter Property="TextColor" Value="{StaticResource WhiteText}"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="FontFamily" Value="{StaticResource PTDemi}"/>
+        </Style>
+        <Style TargetType="Button" x:Key="SendButtonStyle">
+            <Setter Property="HeightRequest" Value="55" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="BackgroundColor" Value="{StaticResource LightBluishColor}" />
+            <Setter Property="TextColor" Value="{StaticResource WhiteText}"/>
+            <Setter Property="VerticalOptions" Value="EndAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style TargetType="Button" x:Key="SignInButtonStyle">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="{StaticResource MonumentRegular}"/>
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="TextColor" Value="{StaticResource WhiteText}"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource LessonXPFirstColor}" />
+        </Style>
+        <!-- Style for Frame -->
+        <Style TargetType="Frame" x:Key="FrameGrayStyle">
+            <Setter Property="BorderColor" Value="{StaticResource LightGrayText}" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="HasShadow" Value="False"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="FrameBlueStyle">
+            <Setter Property="BorderColor" Value="{StaticResource LessonXPFirstColor}" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="HasShadow" Value="False"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="VerifiedEmailStyle">
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="WidthRequest" Value="300"/>
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="BackgroundColor" Value="{StaticResource WhiteText}"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="LoaderFrameStyle">
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="BackgroundColor" Value="{StaticResource WhiteText}" />
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="TryAgainFrameStyle">
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="BackgroundColor" Value="{StaticResource WhiteText}" />
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="HeightRequest" Value="48"/>
+            <Setter Property="WidthRequest" Value="150"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BorderColor" Value="{StaticResource TextColor}"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="HomeFrameStyle">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="CornerRadius" Value="14" />
+        </Style>
+        <Style TargetType="Frame" x:Key="XPGradientFrame">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+        <Style TargetType="Frame" x:Key="XPTextFrame">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HeightRequest" Value="24"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+            <Setter Property="BorderColor" Value="{StaticResource LessonXPSecondColor}"/>
+        </Style>
+        
+        <!-- Style for NoOutlineEntry -->
+        <Style TargetType="cntrl:NoOutlineEntry" x:Key="EntryStyle">
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextColor" Value="{StaticResource LightGrayText}"/>
+        </Style>
+        <Style TargetType="cntrl:NoOutlineEntry" x:Key="PasswordEntryStyle">
+            <Setter Property="IsPassword" Value="True" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FontFamily" Value="{StaticResource PTBook}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextColor" Value="{StaticResource LightGrayText}"/>
+        </Style>
+        <Style TargetType="cntrl:NoOutlineEntry" x:Key="EnterEmailEntryStyle">
+            <Setter Property="PlaceholderColor" Value="{StaticResource BlackText}"/>
+            <Setter Property="TextColor" Value="{StaticResource BlackText}"/>
+            <Setter Property="Opacity" Value="0.4"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+        </Style>
+        <!-- Style for ImageButton -->
+        <Style TargetType="ImageButton" x:Key="ImageButtonStyle">
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HeightRequest" Value="20"/>
+            <Setter Property="WidthRequest" Value="20"/>
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+        </Style>
+        <Style TargetType="ImageButton" x:Key="RememberImageButtonStyle">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HeightRequest" Value="20"/>
+            <Setter Property="WidthRequest" Value="20"/>
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+        <Style TargetType="ImageButton" x:Key="BackButtonStyle">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="WidthRequest" Value="50"/>
+            <Setter Property="HorizontalOptions" Value="Start" />
+        </Style>
+        <Style TargetType="ImageButton" x:Key="TabbedViewButtonStyle">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HeightRequest" Value="50"/>
+        </Style>
+        <!-- Style for BoxView -->
+        <Style TargetType="BoxView" x:Key="BoxViewStyle">
+            <Setter Property="HeightRequest" Value="2" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="BackgroundColor" Value="{StaticResource LightGrayText}" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        </Style>
+        <Style TargetType="BoxView" x:Key="SignInWithBoxViewStyle">
+            <Setter Property="HeightRequest" Value="1" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="BackgroundColor" Value="#C4C4C4" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        </Style>
+
+        <!-- Style for ListView -->
+        <Style TargetType="ListView" x:Key="SideMenuListViewStyle">
+            <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            <Setter Property="HasUnevenRows" Value="False" />
+            <Setter Property="SeparatorVisibility" Value="None" />
+            <Setter Property="RowHeight" Value="50"/>
+            <Setter Property="IsGroupingEnabled" Value="True"/>
+        </Style>
+        <Style TargetType="ListView" x:Key="InvestorsProfileListViewStyle">
+            <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            <Setter Property="HasUnevenRows" Value="True" />
+            <Setter Property="SeparatorVisibility" Value="None" />           
+        </Style>
+        <!-- Style for ScrollView -->
+        <Style TargetType="ScrollView" x:Key="ScrollViewStyle">
+            <Setter Property="Orientation" Value="Vertical" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+        </Style>        
+    </Application.Resources>
+</Application>

@@ -1,0 +1,107 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>%24/DohrniiFoundation-BLCH/DohrniiFoundationMobile/DohrniiFoundation/DohrniiFoundation</SccProjectName>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccAuxPath>https://tfs01.chetu.com/tfs/chetuprojects</SccAuxPath>
+    <SccLocalPath>.</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <UserSecretsId>4d268a12-f659-4488-80de-c340db9a242a</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\InvestorsProfileResponseModels\**" />
+    <Compile Remove="Resource\**" />
+    <EmbeddedResource Remove="Models\InvestorsProfileResponseModels\**" />
+    <EmbeddedResource Remove="Resource\**" />
+    <None Remove="Models\InvestorsProfileResponseModels\**" />
+    <None Remove="Resource\**" />
+    <None Remove="Resources\Fonts\" />
+    <None Remove="Resources\Fonts\futur.ttf" />
+    <None Remove="Resources\Fonts\Futura Bold font.ttf" />
+    <None Remove="Resources\Fonts\Futura Book font.ttf" />
+    <None Remove="Resources\Fonts\FuturaMediumBT.ttf" />
+    <None Remove="Resources\Fonts\FuturaPTBook.otf" />
+    <None Remove="Resources\Fonts\FuturaPTDemi.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.4.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Plugin.FacebookClient" Version="2.1.14" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.3" />
+    <PackageReference Include="StyleCop.MSBuild" Version="6.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.0.9" />
+    <PackageReference Include="Xamarin.Auth" Version="1.6.0.4" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.10.972" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.RangeSlider" Version="1.0.1" />
+    <PackageReference Include="YoutubeExplode" Version="6.0.7" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.0.0.691" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Facades\System.Drawing.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\DFResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DFResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Lessons\ClassesQuestionPage.xaml.cs">
+      <DependentUpon>ClassesQuestionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Lessons\ChaptersQuizPage.xaml.cs">
+      <DependentUpon>ChaptersQuizPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\More\EditProfilePage.xaml.cs">
+      <DependentUpon>EditProfilePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\futur.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Futura Bold font.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Futura Book font.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\FuturaMediumBT.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\FuturaPTBook.otf" />
+    <EmbeddedResource Include="Resources\Fonts\FuturaPTDemi.otf" />
+    <EmbeddedResource Include="Resources\Fonts\MonumentExtended-Regular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\Poppins-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\DFResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DFResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\User\DashboardTabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

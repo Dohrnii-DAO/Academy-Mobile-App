@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<page:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:page="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+             xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Lessons"
+             xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             CloseWhenBackgroundIsClicked="True" 
+             BackgroundInputTransparent="True"
+             xmlns:view="clr-namespace:DohrniiFoundation.Views"
+             x:Class="DohrniiFoundation.Views.Lessons.ConvertXPToJellyfishPage">
+    <page:PopupPage.BindingContext>
+        <vm:ConvertXPToJellyfishViewModel x:Name="VM"/>
+    </page:PopupPage.BindingContext>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Frame Padding="0" HasShadow="False" CornerRadius="16" HorizontalOptions="FillAndExpand" Margin="16,0" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                <StackLayout Margin="16" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Spacing="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label TextColor="{StaticResource BlackText}"  HorizontalTextAlignment="Start" FontFamily="{StaticResource MonumentRegular}" FontSize="12" HorizontalOptions="StartAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding TotalCryptoJellySpend}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{x:Static resource:DFResources.XPWillBeSentText}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label TextColor="{StaticResource BlackText}" HorizontalTextAlignment="End" FontFamily="{StaticResource MonumentRegular}" FontSize="12" HorizontalOptions="EndAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding TotalCryptoJelly}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{x:Static resource:DFResources.XPRemainingText}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <Grid Margin="0,8,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65*"/>
+                            <ColumnDefinition Width="35*"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.Column="0" Text="{Binding EnteredCryptoJelly}" TextChanged="Entry_TextChanged" Placeholder="{x:Static resource:DFResources.EnterJellyfishText}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" TextColor="{StaticResource BlackText}" FontFamily="{StaticResource MonumentRegular}" FontSize="11"/>
+                        <Label Grid.Column="1" Text="{x:Static resource:DFResources.JellyfishesText}" VerticalTextAlignment="Center" TextColor="{StaticResource BlackText}" FontFamily="{StaticResource MonumentRegular}" FontSize="11" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"></Label>
+                    </Grid>
+                    <Button IsEnabled="{Binding IsConvertButtonEnabled}" Margin="0,16,0,0" CornerRadius="8" Text="{x:Static resource:DFResources.ConvertIntoJellyfishText}" FontFamily="{StaticResource MonumentRegular}" BackgroundColor="{Binding ConvertButtonBgColor}" TextColor="{StaticResource WhiteText}" Command="{Binding ConvertXPCommand}"/>
+                </StackLayout>
+            </Frame>
+            <view:Loader IsVisible="{Binding IsLoading}" />
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PopUpCommand}" CommandParameter="{Binding .}"/>
+            </Grid.GestureRecognizers>
+        </Grid>
+    </ContentPage.Content>
+</page:PopupPage>

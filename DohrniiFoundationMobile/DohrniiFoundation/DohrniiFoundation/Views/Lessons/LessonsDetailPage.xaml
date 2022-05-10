@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+             xmlns:helper="clr-namespace:DohrniiFoundation.Helpers"
+             xmlns:view="clr-namespace:DohrniiFoundation.Views"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Lessons"
+             ios:Page.UseSafeArea="true"
+             x:Class="DohrniiFoundation.Views.Lessons.LessonsDetailPage"
+              BackgroundColor="{StaticResource BgColor}">
+    <ContentPage.BindingContext>
+        <vm:LessonChaptersViewModel x:Name="VM"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="70">
+                <ImageButton Margin="21,0,0,0" Source="{x:Static helper:StringConstant.BackArrow}" BackgroundColor="Transparent" HeightRequest="25" WidthRequest="25" HorizontalOptions="StartAndExpand" Command="{Binding BackCommand}" CommandParameter="{Binding .}"/>
+                <Label Text="{x:Static resource:DFResources.LessonsText}" FontSize="17" FontFamily="{StaticResource MonumentRegular}" TextTransform="Uppercase" TextColor="{StaticResource BlackTextColor}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            </Grid>
+            <Grid Margin="21,16,21,0" Grid.Row="1" HeightRequest="70" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal">
+                    <Label Grid.Column="0" Text="{Binding LessonTitle}" VerticalTextAlignment="Center" TextColor="{StaticResource LessonXPFirstColor}" FontSize="14" FontFamily="{StaticResource MonumentRegular}" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"/>
+                    <Frame Grid.Column="1" VerticalOptions="Center" HorizontalOptions="EndAndExpand" HasShadow="False" Padding="0" WidthRequest="50" HeightRequest="25" CornerRadius="8" BackgroundColor="{StaticResource LessonXPFirstColor}">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
+                            <Label Text="{Binding SelectedClassNumber}" FontSize="10" TextColor="{StaticResource WhiteText}" FontFamily="{StaticResource MonumentRegular}"/>
+                            <Label Text="/" FontSize="10" TextColor="{StaticResource WhiteText}" FontFamily="{StaticResource MonumentRegular}"/>
+                            <Label Text="{Binding TotalClasses}" FontSize="10" TextColor="{StaticResource WhiteText}" FontFamily="{StaticResource MonumentRegular}"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <!--Progress bar list-->
+                <Grid Margin="-21,12,-20,0" Grid.Row="1" HeightRequest="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" Grid.ColumnSpan="2" Padding="0">
+                    <FlexLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="8" BindableLayout.ItemsSource="{Binding ClassesProgressBarList}" Direction="Row">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" WidthRequest="{Binding StackWidth}" Grid.ColumnSpan="2">
+                                    <Grid ColumnSpacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Grid.Column="0" HasShadow="False" Padding="0" BackgroundColor="{Binding PassedBorderFrameColor}" HeightRequest="3" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                            <BoxView HorizontalOptions="FillAndExpand"></BoxView>
+                                        </Frame>
+                                        <Frame Grid.Column="1" HasShadow="False" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BorderColor="{Binding BorderFrameColor}" BackgroundColor="{Binding PassedProgressBgFrameColor}" Padding="0" HeightRequest="10" WidthRequest="10" CornerRadius="5"/>
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </Grid>
+            </Grid>
+            <StackLayout Margin="21,16,21,0" Grid.Row="2" Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Frame HasShadow="False" Padding="1" CornerRadius="8" HeightRequest="16" WidthRequest="24" VerticalOptions="Center">
+                        <Frame.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{StaticResource LessonJellyFirstColor}" Offset="1.0"/>
+                                <GradientStop Color="{StaticResource LessonXPFirstColor}" Offset="1.0"/>
+                                <GradientStop Color="{StaticResource LessonXPFirstColor}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Frame.Background>
+                        <Label Text="1" FontSize="10" TextColor="{StaticResource WhiteText}" FontFamily="{StaticResource MonumentRegular}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    </Frame>
+                    <Label Text="{x:Static resource:DFResources.JellyText}" FontSize="8" FontFamily="{StaticResource MonumentRegular}" TextColor="{StaticResource BlackTextColor}" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Frame HasShadow="False" Padding="1" CornerRadius="8" HeightRequest="16" WidthRequest="40" VerticalOptions="Center">
+                        <Frame.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{StaticResource LessonXPFirstColor}" Offset="1.0"/>
+                                <GradientStop Color="{StaticResource LessonXPSecondColor}" Offset="1.0"/>
+                                <GradientStop Color="{StaticResource LessonXPSecondColor}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Frame.Background>
+                        <Label Text="{Binding TotalXPCollected}" FontSize="10" TextColor="{StaticResource BlackTextColor}" FontFamily="{StaticResource MonumentRegular}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    </Frame>
+                    <Label Text="{x:Static resource:DFResources.XPText}" FontSize="8" FontFamily="{StaticResource MonumentRegular}" TextColor="{StaticResource BlackTextColor}" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand" Spacing="65">
+                    <ImageButton Source="{x:Static helper:StringConstant.BackArrow}" BackgroundColor="Transparent" Command="{Binding PreviousCommand}" CommandParameter="{Binding .}" HeightRequest="25" WidthRequest="25" VerticalOptions="Center"/>
+                    <ImageButton Source="{x:Static helper:StringConstant.BackArrow}" BackgroundColor="Transparent" Command="{Binding NextCommand}" CommandParameter="{Binding .}" HeightRequest="25" WidthRequest="25" Rotation="180" VerticalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+
+            <!--Classes carousel view-->
+            <CarouselView Margin="8,21,8,18" Position="{Binding Position}" CurrentItem="{Binding ClassCurrentItem}" Grid.Row="3" ItemsSource="{Binding ClasseslList, Mode=TwoWay}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" CurrentItemChanged="CarouselView_CurrentItemChanged">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame Padding="0" HasShadow="False" CornerRadius="16">
+                                <ScrollView VerticalScrollBarVisibility="Never">
+                                    <Grid>
+                                        <Grid Padding="0" BackgroundColor="{Binding FrameBgColor, Mode=TwoWay}" Opacity="{Binding FrameOpacity,Mode=TwoWay}"/>
+                                        <Grid Margin="0,16,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Label IsVisible="{Binding IsClassNameVisible}" Grid.Row="0" Margin="16,0,16,0" FontFamily="{StaticResource PoppinsMedium500}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{x:Static resource:DFResources.ClassText}" FontSize="14" TextColor="{StaticResource LessonXPFirstColor}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{Binding ClassNumber}" FontSize="14" TextColor="{StaticResource LessonXPFirstColor}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <WebView IsVisible="{Binding IsClassNameHtmlVisible}" HeightRequest="40" Grid.Row="0" Margin="8,0,8,0" BackgroundColor="Transparent" Source="{Binding ClassNumberHtml,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <Grid IsVisible="{Binding IsClassNameHtmlVisible}" HeightRequest="40" Grid.Row="0" Margin="8,0,8,0"  Padding="0" BackgroundColor="{Binding FrameBgColor, Mode=TwoWay}" Opacity="{Binding FrameOpacity,Mode=TwoWay}"/>
+                                            <Label IsVisible="{Binding IsClassNameVisible}" x:Name="TitleName" Grid.Row="1" Margin="16,18,16,0" Text="{Binding Title}" FontSize="18" FontFamily="{StaticResource MonumentRegular}"  TextColor="{StaticResource BlackTextColor}"/>
+                                            <WebView IsVisible="{Binding IsClassNameHtmlVisible}" HeightRequest="40" Grid.Row="1" Margin="8,16,8,0" BackgroundColor="Transparent" Source="{Binding ClassTitleHtml,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <Grid IsVisible="{Binding IsClassNameHtmlVisible}" HeightRequest="40" Grid.Row="1" Margin="8,16,8,0" Padding="0" BackgroundColor="{Binding FrameBgColor, Mode=TwoWay}" Opacity="{Binding FrameOpacity,Mode=TwoWay}"/>
+                                            <WebView IsVisible="{Binding IsClassNameHtmlVisible}" HeightRequest="500" Grid.Row="2" Margin="8,16,0,0" Source="{Binding BlurWebViewSource, Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <WebView IsVisible="{Binding IsClassNameVisible}" HeightRequest="500" Grid.Row="2" Margin="8,16,0,0" Source="{Binding HtmlWebViewSource,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <Grid HeightRequest="500" Grid.Row="2" Margin="8,16,0,0" Padding="0" BackgroundColor="{Binding FrameBgColor, Mode=TwoWay}" Opacity="{Binding FrameOpacity,Mode=TwoWay}"/>
+                                            <Frame IsVisible="{Binding IsClassNameVisible}" Grid.Row="3" HasShadow="False" CornerRadius="8" BackgroundColor="{StaticResource LessonXPFirstColor}" Margin="32,24,32,8" Padding="0" HeightRequest="50">
+                                                <Label Text="{x:Static resource:DFResources.StartQuestionsText}" FontSize="12" FontFamily="{StaticResource MonumentRegular}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource WhiteText}"/>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding StartQuestionCommand}" CommandParameter="{Binding .}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+                                            <WebView IsVisible="{Binding IsClassNameHtmlVisible}" HeightRequest="100" Grid.Row="3" Source="{Binding StartQuestionButtonHtml,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            <Grid IsVisible="{Binding IsClassNameHtmlVisible}" HeightRequest="100" Grid.Row="3" BackgroundColor="{Binding FrameBgColor, Mode=TwoWay}" Opacity="{Binding FrameOpacity,Mode=TwoWay}"></Grid>
+                                        </Grid>
+                                    </Grid>
+                                </ScrollView>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <view:Loader Grid.Row="0" Grid.RowSpan="4" IsVisible="{Binding IsLoading}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

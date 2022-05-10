@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffloadingimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+             ios:Page.UseSafeArea="true"
+             x:Class="DohrniiFoundation.Views.Loader" BackgroundColor="{StaticResource PopPageBackgroundColor}" InputTransparent="False">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+            <!--<Frame IsVisible="{Binding IsLoading, Mode=TwoWay}" Style="{StaticResource LoaderFrameStyle}">
+                <ffloadingimage:CachedImage HeightRequest="70" WidthRequest="70" Source="Loader.gif" VerticalOptions="Center" HorizontalOptions="Center">
+                </ffloadingimage:CachedImage>
+            </Frame>
+            <Label Text="{x:Static resource:DFResources.LoadingText}" Style="{StaticResource LoadingLabelStyle}"></Label>-->
+            <ffloadingimage:CachedImage IsVisible="{Binding IsLoading, Mode=TwoWay}" Source="LoaderNew.gif" HeightRequest="320" WidthRequest="320" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                </ffloadingimage:CachedImage>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -3,6 +3,8 @@
     x:Class="DohrniiFoundation.Views.Socials.TestingFontPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
     xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Socials">
     <ContentPage.BindingContext>
         <vm:TestingFontViewModel x:Name="fontVM" />
@@ -26,6 +28,7 @@
             </StackLayout>
             <WebView
                 x:Name="webview"
+                Source="{Binding HtmlWebViewSource}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand" />
         </StackLayout>

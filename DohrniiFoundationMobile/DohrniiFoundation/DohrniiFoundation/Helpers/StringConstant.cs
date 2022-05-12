@@ -243,8 +243,6 @@ namespace DohrniiFoundation.Helpers
         public const string BlurStartButtonContent1 = "<button style='border-color: #7892FD;height: 50px;border-radius: 8px;width: -webkit-fill-available;margin-left: 32px;margin-right: 32px;margin-top: 24px;margin-bottom: 8px;background-color: #7892FD;color: white;font-size: 12px;font-family: MonumentExtended-Regular;filter: blur(5px)'>";
         public const string BlurStartButtonContent2 = "</button>";
 
-        public const string Sample= "<html>" + "<head>" + "<style type=\"text/css\">" + "@font-face {" + "font-family: MyFont;" + "src: url(\"file:///android_asset/fonts/MonumentExtended-Ultrabold.otf\")" + "}" + "body {" + "font-family: MyFont;" + "font-size: medium;" + "text-align: justify;" + "}" + "</style>" + "</head>" + "<body>" + "<p> It should work for custom font</p>" + "</body>" + "</html>";
-
         public const string HtmlContentWithFont =
             @"
 <html>
@@ -252,12 +250,12 @@ namespace DohrniiFoundation.Helpers
     <style>
         @font-face {
         font-family: monument_extended_regular;
-        src: url('file:///android_asset/fonts/MonumentExtended-Regular.otf');
+        src: url('[[fontpath]]MonumentExtended-Regular.otf');
         }
 
         @font-face {
         font-family: poppins_regular;
-        src: url('file:///android_asset/fonts/PoppinsRegular.ttf');
+        src: url('[[fontpath]]PoppinsRegular.ttf');
         }
         
         p {

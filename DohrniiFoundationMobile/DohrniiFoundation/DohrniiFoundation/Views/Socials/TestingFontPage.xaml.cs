@@ -17,16 +17,10 @@ namespace DohrniiFoundation.Views.Socials
         public TestingFontPage()
         {
             InitializeComponent();
-            HtmlWebViewSource html = new HtmlWebViewSource();
-            html.BaseUrl = DependencyService.Get<ILocalBaseUrl>().Get(); //"file:///android_asset/";
-            html.Html = StringConstant.HtmlContentWithFont;
-            webview.Source = html; //StringConstant.HtmlContentWithFont;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            
+            //HtmlWebViewSource html = new HtmlWebViewSource();
+            //html.BaseUrl = DependencyService.Get<ILocalBaseUrl>().Get(); //"file:///android_asset/";
+            //html.Html = StringConstant.HtmlContentWithFont;
+            //webview.Source = html; //StringConstant.HtmlContentWithFont;
         }
     }
 }

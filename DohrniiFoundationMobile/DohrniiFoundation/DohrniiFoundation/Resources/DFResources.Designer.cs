@@ -1555,6 +1555,15 @@ namespace DohrniiFoundation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Social.
+        /// </summary>
+        internal static string SocialText {
+            get {
+                return ResourceManager.GetString("SocialText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Some basic terms.
         /// </summary>
         internal static string SomebasictermsText {

@@ -5,6 +5,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using DohrniiFoundation.Views.Lessons;
 using DohrniiFoundation.Views.More;
+using DohrniiFoundation.Views.Socials;
 
 namespace DohrniiFoundation.ViewModels
 {
@@ -207,10 +208,10 @@ namespace DohrniiFoundation.ViewModels
                     if (homeTabCommand == null)
                         homeTabCommand = new Command(() =>
                         {
-                            //HomeIcon = StringConstant.HomeTabSelected;
-                            //HomeTextColor = (Color)Application.Current.Resources["BlackTextColor"];
-                            //Preferences.Set(StringConstant.TabIdKey, 1);
-                            //Application.Current.MainPage = new LearnHomePage();
+                            HomeIcon = StringConstant.HomeTabSelected;
+                            HomeTextColor = (Color)Application.Current.Resources["BlackTextColor"];
+                            Preferences.Set(StringConstant.TabIdKey, 1);
+                            Application.Current.MainPage = new SocialPage();
                         });
                 }
                 catch (Exception ex)

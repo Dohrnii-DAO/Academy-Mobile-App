@@ -95,6 +95,7 @@
     <Compile Include="Renderer\TopTwoCornerFrameRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LocalBaseUrl.cs" />
     <Compile Include="Services\OrientationService.cs" />
     <Compile Include="SplashActivity.cs" />
   </ItemGroup>
@@ -111,6 +112,11 @@
     <AndroidAsset Include="Assets\Poppins-SemiBold.ttf" />
     <AndroidAsset Include="Assets\Poppins-Medium.ttf" />
     <AndroidAsset Include="Assets\Poppins-LightItalic.ttf" />
+    <AndroidAsset Include="Assets\fonts\MonumentExtended-Ultrabold.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\fonts\MonumentExtended-Regular.otf" />
+    <AndroidAsset Include="Assets\fonts\PoppinsRegular.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -564,6 +570,30 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\bluImag.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\defaultprofile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\nftbadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ecobadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\mvbadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\goldBadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\mCup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bronzeBadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\silverBadge.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -1,78 +1,209 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:view="clr-namespace:DohrniiFoundation.Views" 
-             xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.More"
-             x:Class="DohrniiFoundation.Views.More.ProfileMorePage"
-             xmlns:helper="clr-namespace:DohrniiFoundation.Helpers"
-             xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
-             NavigationPage.HasNavigationBar="False"
-             xmlns:ffloadingimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="False"
-             BackgroundColor="#f7f7f7">
+<ContentPage
+    x:Class="DohrniiFoundation.Views.More.ProfileMorePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffloadingimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:helper="clr-namespace:DohrniiFoundation.Helpers"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+    xmlns:view="clr-namespace:DohrniiFoundation.Views"
+    xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.More"
+    ios:Page.UseSafeArea="False"
+    BackgroundColor="#f7f7f7"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:ProfileMoreViewModel x:Name="VM"/>
+        <vm:ProfileMoreViewModel x:Name="VM" />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <StackLayout Margin="0,0,0,50" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
-                <Image Source="{x:Static helper:StringConstant.LessonsBg}" Opacity="0.5" Aspect="AspectFit" Style="{StaticResource LessonBgImageStyle}"/>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout
+                Margin="0,0,0,50"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="EndAndExpand">
+                <Image
+                    Aspect="AspectFit"
+                    Opacity="0.5"
+                    Source="{x:Static helper:StringConstant.LessonsBg}"
+                    Style="{StaticResource LessonBgImageStyle}" />
             </StackLayout>
             <Grid Margin="0,16,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Frame Grid.Row="0" Padding="0" HasShadow="False" Margin="16,21,16,0" HeightRequest="220" CornerRadius="10" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
-                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Frame
+                    Grid.Row="0"
+                    Margin="16,21,16,0"
+                    Padding="0"
+                    CornerRadius="10"
+                    HasShadow="False"
+                    HeightRequest="220"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <StackLayout Margin="16,16,16,0" Spacing="0" Grid.Row="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Image Source="{x:Static helper:StringConstant.EditProfileIcon}" Aspect="AspectFit" HorizontalOptions="StartAndExpand" HeightRequest="20" WidthRequest="20">
+                        <StackLayout
+                            Grid.Row="0"
+                            Margin="16,16,16,0"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="0"
+                            VerticalOptions="FillAndExpand">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="20"
+                                HorizontalOptions="StartAndExpand"
+                                Source="{x:Static helper:StringConstant.EditProfileIcon}"
+                                WidthRequest="20">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CommandEditProfile}"/>
+                                    <TapGestureRecognizer Command="{Binding CommandEditProfile}" />
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Frame Padding="0" HasShadow="False" WidthRequest="106" HeightRequest="30" CornerRadius="10" BackgroundColor="{StaticResource ConnectWalletBgColor}" HorizontalOptions="EndAndExpand">
-                                <Label Text="{x:Static resource:DFResources.ConnectWalletText}" TextColor="{StaticResource WhiteText}" FontSize="7" FontFamily="{StaticResource MonumentRegular}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Frame
+                                Padding="0"
+                                BackgroundColor="{StaticResource ConnectWalletBgColor}"
+                                CornerRadius="10"
+                                HasShadow="False"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                WidthRequest="106">
+                                <Label
+                                    FontFamily="{StaticResource MonumentRegular}"
+                                    FontSize="7"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static resource:DFResources.ConnectWalletText}"
+                                    TextColor="{StaticResource WhiteText}"
+                                    VerticalTextAlignment="Center" />
                             </Frame>
                         </StackLayout>
-                        <Grid Margin="19,16,7,0" ColumnSpacing="5" Grid.Row="1" HeightRequest="100" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid
+                            Grid.Row="1"
+                            Margin="19,16,7,0"
+                            ColumnSpacing="5"
+                            HeightRequest="100"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40*"/>
-                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="40*" />
+                                <ColumnDefinition Width="60*" />
                             </Grid.ColumnDefinitions>
-                            <Frame Grid.Column="0" BorderColor="LightGray" IsClippedToBounds="True" HeightRequest="96" WidthRequest="96" CornerRadius="48" Padding="0" HasShadow="False" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand">
+                            <Frame
+                                Grid.Column="0"
+                                Padding="0"
+                                BorderColor="LightGray"
+                                CornerRadius="48"
+                                HasShadow="False"
+                                HeightRequest="96"
+                                HorizontalOptions="StartAndExpand"
+                                IsClippedToBounds="True"
+                                VerticalOptions="FillAndExpand"
+                                WidthRequest="96">
                                 <Image Aspect="AspectFill">
                                     <Image.Source>
-                                        <UriImageSource Uri="{Binding ProfileImage}" CacheValidity="14" CachingEnabled="False"/>
+                                        <UriImageSource
+                                            CacheValidity="14"
+                                            CachingEnabled="False"
+                                            Uri="{Binding ProfileImage}" />
                                     </Image.Source>
                                 </Image>
                             </Frame>
-                            <StackLayout Margin="-18,0,0,0" Grid.Column="1" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding UserName}" FontSize="18" FontFamily="{StaticResource MonumentRegular}" TextColor="{StaticResource BlackTextColor}"/>
-                                <Label Text="{Binding UserEmail}" Opacity="0.75" FontSize="9" FontFamily="{StaticResource MonumentRegular}" TextColor="{StaticResource BlackTextColor}"/>
-                                <Label Text="0x567rth..............yx56" Opacity="0.6" FontSize="7" FontFamily="{StaticResource MonumentRegular}" TextColor="{StaticResource BlackTextColor}"/>
-                                <StackLayout Margin="0,0,8,0" Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                    <Button Padding="2" CornerRadius="10" HeightRequest="24" TextColor="{StaticResource BlackText}" Text="{x:Static resource:DFResources.JoinCommunityText}" BackgroundColor="{StaticResource JoinCommunityBgColor}" FontSize="7" FontFamily="{StaticResource MonumentRegular}"/>
-                                    <Button Padding="2" CornerRadius="10" HeightRequest="24" TextColor="{StaticResource BlackText}" Text="{x:Static resource:DFResources.InviteFriendText}" BackgroundColor="{StaticResource InviteBgColor}" FontSize="7" FontFamily="{StaticResource MonumentRegular}"/>
+                            <StackLayout
+                                Grid.Column="1"
+                                Margin="-18,0,0,0"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Vertical"
+                                VerticalOptions="FillAndExpand">
+                                <Label
+                                    FontFamily="{StaticResource MonumentRegular}"
+                                    FontSize="18"
+                                    Text="{Binding UserName}"
+                                    TextColor="{StaticResource BlackTextColor}" />
+                                <Label
+                                    FontFamily="{StaticResource MonumentRegular}"
+                                    FontSize="9"
+                                    Opacity="0.75"
+                                    Text="{Binding UserEmail}"
+                                    TextColor="{StaticResource BlackTextColor}" />
+                                <Label
+                                    FontFamily="{StaticResource MonumentRegular}"
+                                    FontSize="7"
+                                    Opacity="0.6"
+                                    Text="0x567rth..............yx56"
+                                    TextColor="{StaticResource BlackTextColor}" />
+                                <StackLayout
+                                    Margin="0,0,8,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="FillAndExpand">
+                                    <Button
+                                        Padding="2"
+                                        BackgroundColor="{StaticResource JoinCommunityBgColor}"
+                                        CornerRadius="10"
+                                        FontFamily="{StaticResource MonumentRegular}"
+                                        FontSize="7"
+                                        HeightRequest="24"
+                                        Text="{x:Static resource:DFResources.JoinCommunityText}"
+                                        TextColor="{StaticResource BlackText}" />
+                                    <Button
+                                        Padding="2"
+                                        BackgroundColor="{StaticResource InviteBgColor}"
+                                        CornerRadius="10"
+                                        FontFamily="{StaticResource MonumentRegular}"
+                                        FontSize="7"
+                                        HeightRequest="24"
+                                        Text="{x:Static resource:DFResources.InviteFriendText}"
+                                        TextColor="{StaticResource BlackText}" />
                                 </StackLayout>
                             </StackLayout>
                         </Grid>
                     </Grid>
                 </Frame>
-                <ListView Grid.Row="1" RowHeight="70" Footer="" VerticalScrollBarVisibility="Never" Margin="15,20,15,60" ItemSelected="ListView_ItemSelected" ItemsSource="{Binding ProfileMoreList,Mode=TwoWay}" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" SeparatorVisibility="None">
+                <ListView
+                    Grid.Row="1"
+                    Margin="15,20,15,60"
+                    BackgroundColor="Transparent"
+                    Footer=""
+                    HorizontalOptions="FillAndExpand"
+                    ItemSelected="ListView_ItemSelected"
+                    ItemsSource="{Binding ProfileMoreList, Mode=TwoWay}"
+                    RowHeight="70"
+                    SeparatorVisibility="None"
+                    VerticalOptions="FillAndExpand"
+                    VerticalScrollBarVisibility="Never">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame CornerRadius="10" Margin="0,8,0,8" HasShadow="False" Padding="0">
+                                <Frame
+                                    Margin="0,8,0,8"
+                                    Padding="0"
+                                    CornerRadius="10"
+                                    HasShadow="False">
                                     <StackLayout Margin="21,0,0,0" Orientation="Horizontal">
-                                        <Image Source="{Binding TitleImage}" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"></Image>
-                                        <Label Text="{Binding Title}" TextColor="{StaticResource BlackText}" Opacity="0.8" FontSize="13" FontFamily="{StaticResource MonumentRegular}" VerticalTextAlignment="Center" Margin="16,0,0,0"></Label>
-                                        <Image IsVisible="{Binding IsNextVisible,Mode=TwoWay}" Margin="0,0,8,0" Source="{x:Static helper:StringConstant.NextIcon}" Aspect="AspectFit" HeightRequest="12" WidthRequest="12" HorizontalOptions="EndAndExpand"></Image>
+                                        <Image
+                                            HeightRequest="20"
+                                            Source="{Binding TitleImage}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="20" />
+                                        <Label
+                                            Margin="16,0,0,0"
+                                            FontFamily="{StaticResource MonumentRegular}"
+                                            FontSize="13"
+                                            Opacity="0.8"
+                                            Text="{Binding Title}"
+                                            TextColor="{StaticResource BlackText}"
+                                            VerticalTextAlignment="Center" />
+                                        <Image
+                                            Margin="0,0,8,0"
+                                            Aspect="AspectFit"
+                                            HeightRequest="12"
+                                            HorizontalOptions="EndAndExpand"
+                                            IsVisible="{Binding IsNextVisible, Mode=TwoWay}"
+                                            Source="{x:Static helper:StringConstant.NextIcon}"
+                                            WidthRequest="12" />
                                     </StackLayout>
                                 </Frame>
                             </ViewCell>
@@ -80,8 +211,11 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
-            <view:TabbedView VerticalOptions="EndAndExpand"/>
-            <view:Loader VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsLoading}"></view:Loader>
+            <view:TabbedView VerticalOptions="EndAndExpand" />
+            <view:Loader
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,54 +1,90 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels"
-             xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
-             x:Class="DohrniiFoundation.Views.TabbedView">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="DohrniiFoundation.Views.TabbedView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+    xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels">
     <ContentView.BindingContext>
-        <vm:TabbedViewViewModel x:Name="tabbedViewModel"/>
+        <vm:TabbedViewViewModel x:Name="tabbedViewModel" />
     </ContentView.BindingContext>
     <ContentView.Content>
-        <StackLayout Padding="0" Spacing="0">      
-            <BoxView VerticalOptions="End" HeightRequest=".5" BackgroundColor="{StaticResource LightGrayText}"></BoxView>
-            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" BackgroundColor="{StaticResource WhiteText}">
-               <Grid.HeightRequest>
-                   <OnPlatform x:TypeArguments="x:Double">
-                       <On Platform="iOS">70</On>
+        <StackLayout Padding="0" Spacing="0">
+            <BoxView
+                BackgroundColor="{StaticResource LightGrayText}"
+                HeightRequest=".5"
+                VerticalOptions="End" />
+            <Grid
+                BackgroundColor="{StaticResource WhiteText}"
+                ColumnSpacing="0"
+                HorizontalOptions="FillAndExpand"
+                RowSpacing="0"
+                VerticalOptions="EndAndExpand">
+                <Grid.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS">70</On>
                         <On Platform="Android">50</On>
-                   </OnPlatform>
-               </Grid.HeightRequest>
+                    </OnPlatform>
+                </Grid.HeightRequest>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
                 </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0" Padding="0" Spacing="4">
-                    <Image Source="{Binding HomeIcon}" Style="{StaticResource TabbedImageStyle}"></Image>
-                    <Label TextColor="{Binding HomeTextColor}" Text="{x:Static resource:DFResources.HomeText}" Style="{StaticResource TabbedLabelStyle}"></Label>
+                <StackLayout
+                    Grid.Column="0"
+                    Padding="0"
+                    Spacing="4">
+                    <Image Source="{Binding HomeIcon}" Style="{StaticResource TabbedImageStyle}" />
+                    <Label
+                        Style="{StaticResource TabbedLabelStyle}"
+                        Text="{x:Static resource:DFResources.SocialText}"
+                        TextColor="{Binding HomeTextColor}" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding HomeTabCommand}" CommandParameter="{Binding .}"/>
+                        <TapGestureRecognizer Command="{Binding HomeTabCommand}" CommandParameter="{Binding .}" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <StackLayout Grid.Column="1" Padding="0" Spacing="4">
-                    <Image Source="{Binding LessonsIcon}" Style="{StaticResource TabbedImageStyle}" WidthRequest="23"></Image>
-                    <Label TextColor="{Binding LessonsTextColor}" Text="{x:Static resource:DFResources.LessonsText}" Style="{StaticResource TabbedLabelStyle}"></Label>
+                <StackLayout
+                    Grid.Column="1"
+                    Padding="0"
+                    Spacing="4">
+                    <Image
+                        Source="{Binding LessonsIcon}"
+                        Style="{StaticResource TabbedImageStyle}"
+                        WidthRequest="23" />
+                    <Label
+                        Style="{StaticResource TabbedLabelStyle}"
+                        Text="{x:Static resource:DFResources.LessonsText}"
+                        TextColor="{Binding LessonsTextColor}" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding LessonsTabCommand}" CommandParameter="{Binding .}"/>
+                        <TapGestureRecognizer Command="{Binding LessonsTabCommand}" CommandParameter="{Binding .}" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <StackLayout Grid.Column="2" Padding="0" Spacing="4">
-                    <Image Source="{Binding StrategiesIcon}" Style="{StaticResource TabbedImageStyle}"></Image>
-                    <Label TextColor="{Binding StrategiesTextColor}" Text="{x:Static resource:DFResources.StrategiesText}" Style="{StaticResource TabbedLabelStyle}"></Label>
+                <StackLayout
+                    Grid.Column="2"
+                    Padding="0"
+                    Spacing="4">
+                    <Image Source="{Binding StrategiesIcon}" Style="{StaticResource TabbedImageStyle}" />
+                    <Label
+                        Style="{StaticResource TabbedLabelStyle}"
+                        Text="{x:Static resource:DFResources.StrategiesText}"
+                        TextColor="{Binding StrategiesTextColor}" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding InvestorsTabCommand}" CommandParameter="{Binding .}"/>
+                        <TapGestureRecognizer Command="{Binding InvestorsTabCommand}" CommandParameter="{Binding .}" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <StackLayout Grid.Column="3" Padding="0" Spacing="4">
-                    <Image Source="{Binding MoreIcon}" Style="{StaticResource TabbedImageStyle}"></Image>
-                    <Label TextColor="{Binding MoreTextColor}" Text="{x:Static resource:DFResources.MoreText}" Style="{StaticResource TabbedLabelStyle}"></Label>
+                <StackLayout
+                    Grid.Column="3"
+                    Padding="0"
+                    Spacing="4">
+                    <Image Source="{Binding MoreIcon}" Style="{StaticResource TabbedImageStyle}" />
+                    <Label
+                        Style="{StaticResource TabbedLabelStyle}"
+                        Text="{x:Static resource:DFResources.MoreText}"
+                        TextColor="{Binding MoreTextColor}" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding MoreTabCommand}" CommandParameter="{Binding .}"/>
+                        <TapGestureRecognizer Command="{Binding MoreTabCommand}" CommandParameter="{Binding .}" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
             </Grid>

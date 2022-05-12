@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    x:Class="DohrniiFoundation.Themes.PrimaryTheme"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="LeaderboardItemBgColor">#F1ECFE</Color>
+    <Color x:Key="PrimaryBtnColor">#7B98FE</Color>
+    <Color x:Key="BorderColor">#C4C4C4</Color>
+    <Color x:Key="PrimaryLighterColor">#1261A0</Color>
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="PrimaryBgColor">#E7EBEC</Color>
+    <Color x:Key="White">#ffffff</Color>
+    <Color x:Key="Grey">#dddddd</Color>
+    <Color x:Key="Transparent">#00000000</Color>
+
+    <LinearGradientBrush x:Key="LightGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.1" Color="#91C7FE" />
+        <GradientStop Offset="1.0" Color="#A1EAFE" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="RedGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.1" Color="#D5CFCC" />
+        <GradientStop Offset="1.0" Color="#FFB9A3" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="PurpleGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.1" Color="#7993FE" />
+        <GradientStop Offset="1.0" Color="#D4CEF5" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="FriendsBGGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Offset="0.1" Color="#99CFFE" />
+        <GradientStop Offset="1.0" Color="#89B1FE" />
+    </LinearGradientBrush>
+
+
+</ResourceDictionary>

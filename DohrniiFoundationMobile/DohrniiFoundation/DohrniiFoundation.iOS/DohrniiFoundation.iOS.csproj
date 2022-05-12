@@ -76,10 +76,14 @@
     <Compile Include="Renderer\CustomEditorRenderer.cs" />
     <Compile Include="Renderer\NoOutlineEntryRenderer.cs" />
     <Compile Include="Renderer\TopTwoCornerFrameRenderer.cs" />
+    <Compile Include="Services\LocalBaseUrl.cs" />
     <None Include=".editorconfig" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\MonumentExtended-Regular.otf" />
+    <BundleResource Include="Resources\MonumentExtended-Ultrabold.otf" />
+    <BundleResource Include="Resources\PoppinsRegular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -464,5 +468,29 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ClassCompleteJelly1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\defaultprofile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nftbadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ecobadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mvbadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\goldBadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mCup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bronzeBadge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\silverBadge.png" />
   </ItemGroup>
 </Project>

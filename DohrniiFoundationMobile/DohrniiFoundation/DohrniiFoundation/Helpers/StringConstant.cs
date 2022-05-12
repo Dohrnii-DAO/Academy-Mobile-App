@@ -242,6 +242,89 @@ namespace DohrniiFoundation.Helpers
         public const string BlurClassNumberContent2 = "</span ></p>";
         public const string BlurStartButtonContent1 = "<button style='border-color: #7892FD;height: 50px;border-radius: 8px;width: -webkit-fill-available;margin-left: 32px;margin-right: 32px;margin-top: 24px;margin-bottom: 8px;background-color: #7892FD;color: white;font-size: 12px;font-family: MonumentExtended-Regular;filter: blur(5px)'>";
         public const string BlurStartButtonContent2 = "</button>";
+
+        public const string Sample= "<html>" + "<head>" + "<style type=\"text/css\">" + "@font-face {" + "font-family: MyFont;" + "src: url(\"file:///android_asset/fonts/MonumentExtended-Ultrabold.otf\")" + "}" + "body {" + "font-family: MyFont;" + "font-size: medium;" + "text-align: justify;" + "}" + "</style>" + "</head>" + "<body>" + "<p> It should work for custom font</p>" + "</body>" + "</html>";
+
+        public const string HtmlContentWithFont =
+            @"
+<html>
+<head>
+    <style>
+        @font-face {
+        font-family: monument_extended_regular;
+        src: url('file:///android_asset/fonts/MonumentExtended-Regular.otf');
+        }
+
+        @font-face {
+        font-family: poppins_regular;
+        src: url('file:///android_asset/fonts/PoppinsRegular.ttf');
+        }
+        
+        p {
+            font-family: poppins_regular;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 141%;
+            letter-spacing: -0.01em;
+            color: #070707;
+        }
+        span {
+            font-family: monument_extended_regular;
+            color: #7892FD;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 141%;
+            letter-spacing: -0.01em;
+        }
+    </style>
+</head>
+<body>
+    <p>The internet was meant to be free of censorship and free of centralised control. But nowadays we notice that doesn't come true.</p>
+
+    <p>
+        There are powerful <br>
+        <span>GATEKEEPERS</span> that ban and
+        censor what we can read online.
+    </p>
+
+
+    <p>
+        Governments  <br>
+        Censorship is not generally bad i.e protecting children from unsuitable content or blocking hateful and violent content. A lot of democratic countries are doing so.
+
+    </p>
+    <p>
+        Tech Giants  <br>
+        Some companies delete information from their platform or ban people so they can’t share information or “fake” news. If you make a search with a search engine like google their algorithm determines what kind of Information you will see.
+
+    </p>
+
+    <p>
+        Most blockchains are <span>CENSORSHIP-FREE</span>
+        People can add infromation in the blockchain without going through intermediary platforms. Some crypto projects use blockchain technology to build a decentralised social network.
+    </p>
+
+
+    <p>
+        <span>
+            Redactable <br>
+            Blockchain <br />
+        </span>
+
+        There are discussions
+        if it should be possible
+        to delete information
+        on a blockchain and how
+        it would work.
+    </p>
+
+    <p>One idea is to include a consensus-based <span>VOTING</span> into the blockchain protocol which allows to delete information if the majority agrees. </p>
+
+    <p>Another approach is filtering data <span>BEFORE</span> it is added to the blockchain.</p>
+
+</body>
+</html>
+";
         #endregion
 
     }

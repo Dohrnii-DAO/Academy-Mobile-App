@@ -777,4 +777,7 @@
   <data name="WalletAddressText" xml:space="preserve">
     <value>Wallet Address</value>
   </data>
+  <data name="SocialText" xml:space="preserve">
+    <value>Social</value>
+  </data>
 </root>

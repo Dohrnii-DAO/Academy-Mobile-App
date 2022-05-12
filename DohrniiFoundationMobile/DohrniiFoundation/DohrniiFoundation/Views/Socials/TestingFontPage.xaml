@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DohrniiFoundation.Views.Socials.TestingFontPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Socials">
+    <ContentPage.BindingContext>
+        <vm:TestingFontViewModel x:Name="fontVM" />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="20,0,20,0">
+            <StackLayout BackgroundColor="{DynamicResource White}" Orientation="Horizontal">
+                <Image
+                    HeightRequest="24"
+                    Source="BackArrow.png"
+                    VerticalOptions="Center"
+                    WidthRequest="24">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackBtnCommand}" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label
+                    Style="{StaticResource SocialHeaderTextStyle}"
+                    Text="Class 2"
+                    VerticalOptions="Center" />
+            </StackLayout>
+            <WebView
+                x:Name="webview"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

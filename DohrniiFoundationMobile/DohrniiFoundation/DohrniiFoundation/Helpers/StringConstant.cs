@@ -228,7 +228,12 @@ namespace DohrniiFoundation.Helpers
         public const string LessonChaptersPage = "LessonChaptersPage";
         public const string Publickey = "12345678";
         public const string Secretkey = "87654321";
-        public const string reset_password = "reset_password";      
+        public const string reset_password = "reset_password";
+
+
+        public const string PrimaryBtnColor = "#7B98FE";
+        public const string Transparent = "#00000000";
+
 
         #endregion
 

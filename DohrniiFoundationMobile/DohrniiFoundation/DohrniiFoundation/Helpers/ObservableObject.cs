@@ -1,4 +1,5 @@
 ﻿using Microsoft.AppCenter.Crashes;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,8 @@ namespace DohrniiFoundation.Helpers
     /// <summary>
     /// Class to change the value of property at runtime and reflect changes on UI
     /// </summary>
+
+    [AddINotifyPropertyChangedInterface]
     public class ObservableObject : INotifyPropertyChanged
     {
         #region Private Properties

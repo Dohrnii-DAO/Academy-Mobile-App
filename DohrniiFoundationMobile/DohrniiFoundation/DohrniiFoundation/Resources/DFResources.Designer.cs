@@ -1465,6 +1465,15 @@ namespace DohrniiFoundation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share invite with friends.
+        /// </summary>
+        internal static string ShareWithFriendText {
+            get {
+                return ResourceManager.GetString("ShareWithFriendText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign In.
         /// </summary>
         internal static string SignInText {

@@ -3,6 +3,7 @@
     x:Class="DohrniiFoundation.Views.Socials.SocialPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:DohrniiFoundation.Controls"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
     xmlns:view="clr-namespace:DohrniiFoundation.Views"
@@ -29,6 +30,7 @@
                 </StackLayout>
                 <ScrollView
                     Grid.Row="1"
+                    Padding="0,0,0,50"
                     HorizontalOptions="FillAndExpand"
                     HorizontalScrollBarVisibility="Never"
                     VerticalOptions="FillAndExpand">
@@ -127,7 +129,7 @@
                                                     FontFamily="{StaticResource MonumentRegular}"
                                                     FontSize="6"
                                                     HorizontalOptions="Center"
-                                                    Text="JULLY"
+                                                    Text="JELLY"
                                                     TextColor="{DynamicResource Black}" />
                                             </StackLayout>
                                         </Frame>
@@ -308,39 +310,72 @@
                             <Frame
                                 Grid.Column="0"
                                 Padding="12,3,12,6"
-                                BackgroundColor="{DynamicResource PrimaryBtnColor}"
+                                BackgroundColor="{Binding TodayBgColor}"
                                 CornerRadius="5"
                                 HasShadow="False">
                                 <Label
                                     HorizontalOptions="Center"
                                     Text="Today"
-                                    TextColor="{DynamicResource White}" />
+                                    TextColor="{DynamicResource Black}">
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding TodayBgColor}"
+                                            TargetType="Label"
+                                            Value="#7B98FE">
+                                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding TestingCommand}" NumberOfTapsRequired="1" />
+                                    <TapGestureRecognizer Command="{Binding TodayCommand}" NumberOfTapsRequired="1" />
                                 </Frame.GestureRecognizers>
                             </Frame>
 
                             <Frame
                                 Grid.Column="1"
                                 Padding="12,3,12,6"
-                                BackgroundColor="{DynamicResource Transparent}"
+                                BackgroundColor="{Binding WeeklyBgColor}"
                                 CornerRadius="5"
                                 HasShadow="False">
                                 <Label
                                     HorizontalOptions="Center"
                                     Text="Weekly"
-                                    TextColor="{DynamicResource Black}" />
+                                    TextColor="{DynamicResource Black}">
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding WeeklyBgColor}"
+                                            TargetType="Label"
+                                            Value="#7B98FE">
+                                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding WeeklyCommand}" NumberOfTapsRequired="1" />
+                                </Frame.GestureRecognizers>
                             </Frame>
                             <Frame
                                 Grid.Column="2"
                                 Padding="12,3,12,6"
-                                BackgroundColor="{DynamicResource Transparent}"
+                                BackgroundColor="{Binding MonthlyBgColor}"
                                 CornerRadius="5"
                                 HasShadow="False">
                                 <Label
                                     HorizontalOptions="Center"
                                     Text="Monthly"
-                                    TextColor="{DynamicResource Black}" />
+                                    TextColor="{DynamicResource Black}">
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding MonthlyBgColor}"
+                                            TargetType="Label"
+                                            Value="#7B98FE">
+                                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding MonthlyCommand}" NumberOfTapsRequired="1" />
+                                </Frame.GestureRecognizers>
                             </Frame>
                         </Grid>
 
@@ -415,41 +450,319 @@
                             Text="FRIENDS"
                             TextColor="{DynamicResource Black}" />
 
+                        <Image
+                            Grid.Row="5"
+                            Margin="25,0,0,5"
+                            HorizontalOptions="StartAndExpand"
+                            Source="friendsJellyfish.png"
+                            VerticalOptions="EndAndExpand" />
+
                         <Frame
                             Grid.Row="5"
-                            Margin="15,20,15,20"
-                            Padding="15"
+                            Margin="15,20,15,0"
+                            Padding="15,20,15,50"
                             Background="{DynamicResource FriendsBGGradient}"
                             CornerRadius="20"
-                            HasShadow="False"
-                            HeightRequest="200">
+                            HasShadow="False">
 
-                            <StackLayout
-                                BindableLayout.ItemsSource="{Binding LeaderBoards}"
-                                HorizontalOptions="FillAndExpand"
-                                Spacing="8">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <Frame
-                                            Padding="0"
-                                            BackgroundColor="{DynamicResource Transparent}"
-                                            CornerRadius="5"
-                                            HasShadow="False"
-                                            HorizontalOptions="FillAndExpand">
-                                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" />
-                                        </Frame>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
+                            <StackLayout>
+                                <Frame
+                                    Margin="0,0,0,10"
+                                    Padding="0"
+                                    BackgroundColor="{DynamicResource FriendsItemBgColor}"
+                                    BorderColor="{DynamicResource BorderColor}"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HorizontalOptions="EndAndExpand">
+                                    <StackLayout Margin="5" Orientation="Horizontal">
+                                        <Image Source="AddFriend.png" />
+                                        <Label
+                                            FontFamily="{StaticResource MonumentRegular}"
+                                            FontSize="8"
+                                            Text="Add Friend"
+                                            TextColor="{DynamicResource DarkText}"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AddFriendCommand}" NumberOfTapsRequired="1" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <StackLayout
+                                    BindableLayout.ItemsSource="{Binding Friends}"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="8">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame
+                                                Padding="10,10,10,10"
+                                                BackgroundColor="{DynamicResource FriendsItemBgColor}"
+                                                BorderColor="{DynamicResource BorderColor}"
+                                                CornerRadius="5"
+                                                HasShadow="False"
+                                                HorizontalOptions="FillAndExpand">
+                                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                                        <Image
+                                                            HeightRequest="30"
+                                                            Source="{Binding Profile}"
+                                                            WidthRequest="30" />
+                                                        <StackLayout
+                                                            Grid.Column="1"
+                                                            Margin="10,0,0,0"
+                                                            VerticalOptions="Center">
+                                                            <Label
+                                                                Margin="0,2,0,0"
+                                                                FontFamily="{StaticResource MonumentRegular}"
+                                                                FontSize="12"
+                                                                Text="{Binding Username}"
+                                                                TextColor="{DynamicResource Black}"
+                                                                VerticalOptions="Center" />
+                                                            <Grid
+                                                                Margin="0,0,40,0"
+                                                                ColumnSpacing="10"
+                                                                HorizontalOptions="StartAndExpand">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="auto" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Frame
+                                                                    Grid.Column="0"
+                                                                    Padding="0"
+                                                                    Background="{DynamicResource LightGradient}"
+                                                                    CornerRadius="5"
+                                                                    HasShadow="False"
+                                                                    HeightRequest="20"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    WidthRequest="40">
+                                                                    <StackLayout Spacing="0">
+                                                                        <Label
+                                                                            FontFamily="PoppinsBold"
+                                                                            FontSize="8"
+                                                                            HorizontalOptions="Center"
+                                                                            Text="{Binding XP}"
+                                                                            TextColor="{DynamicResource White}" />
+                                                                        <Label
+                                                                            Margin="0,-4,0,0"
+                                                                            FontFamily="{StaticResource PoppinsRegular}"
+                                                                            FontSize="8"
+                                                                            HorizontalOptions="Center"
+                                                                            Text="XP"
+                                                                            TextColor="{DynamicResource White}" />
+                                                                    </StackLayout>
+                                                                </Frame>
+                                                                <Frame
+                                                                    Grid.Column="1"
+                                                                    Padding="0"
+                                                                    Background="{DynamicResource PurpleGradient}"
+                                                                    CornerRadius="5"
+                                                                    HasShadow="False"
+                                                                    HeightRequest="20"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    WidthRequest="40">
+                                                                    <StackLayout Spacing="0">
+                                                                        <Label
+                                                                            FontFamily="PoppinsBold"
+                                                                            FontSize="8"
+                                                                            HorizontalOptions="Center"
+                                                                            Text="{Binding Jelly}"
+                                                                            TextColor="{DynamicResource White}" />
+                                                                        <Label
+                                                                            Margin="0,-4,0,0"
+                                                                            FontFamily="{StaticResource PoppinsRegular}"
+                                                                            FontSize="8"
+                                                                            HorizontalOptions="Center"
+                                                                            Text="JULLY"
+                                                                            TextColor="{DynamicResource White}" />
+                                                                    </StackLayout>
+                                                                </Frame>
+                                                                <Frame
+                                                                    Grid.Column="2"
+                                                                    Padding="0"
+                                                                    Background="{DynamicResource RedGradient}"
+                                                                    CornerRadius="5"
+                                                                    HasShadow="False"
+                                                                    HeightRequest="20"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    WidthRequest="40">
+                                                                    <StackLayout Spacing="0">
+                                                                        <Label
+                                                                            FontFamily="PoppinsBold"
+                                                                            FontSize="8"
+                                                                            HorizontalOptions="Center"
+                                                                            Text="{Binding DHN}"
+                                                                            TextColor="{DynamicResource White}" />
+                                                                        <Label
+                                                                            Margin="0,-4,0,0"
+                                                                            FontFamily="{StaticResource PoppinsRegular}"
+                                                                            FontSize="8"
+                                                                            HorizontalOptions="Center"
+                                                                            Text="DHN"
+                                                                            TextColor="{DynamicResource White}" />
+                                                                    </StackLayout>
+                                                                </Frame>
+                                                            </Grid>
+                                                        </StackLayout>
+
+
+
+                                                    </StackLayout>
+                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                        <Label
+                                                            Margin="0,5,0,0"
+                                                            FontFamily="{StaticResource PoppinsRegular}"
+                                                            FontSize="9"
+                                                            Text="{Binding Score}"
+                                                            TextColor="{DynamicResource Black}"
+                                                            VerticalOptions="Center" />
+                                                        <Image Source="{Binding ScoreImg}" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
                             </StackLayout>
-
                         </Frame>
+
+
 
                     </Grid>
                 </ScrollView>
             </Grid>
+
             <view:TabbedView VerticalOptions="EndAndExpand" />
             <view:NoInternetView IsVisible="{Binding IsInternet}" />
             <view:Loader IsVisible="{Binding IsLoading}" />
+
+            <StackLayout
+                BackgroundColor="{StaticResource PopPageBackgroundColor}"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding ShowingAddFriendPopUp}"
+                VerticalOptions="FillAndExpand">
+                <Frame
+                    Margin="18,50,18,50"
+                    Padding="5,40,5,10"
+                    BackgroundColor="{DynamicResource White}"
+                    BorderColor="{DynamicResource BorderColor}"
+                    CornerRadius="10"
+                    HasShadow="False"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Frame
+                            Padding="5,0,10,0"
+                            BackgroundColor="{DynamicResource Grey}"
+                            CornerRadius="5"
+                            HasShadow="False"
+                            HeightRequest="40"
+                            VerticalOptions="StartAndExpand">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <controls:NoOutlineEntry
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="Search"
+                                    ReturnType="Search"
+                                    Text="{Binding SearchQ}"
+                                    TextChangedCommand="{Binding FilterUserCommand}"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Image
+                                    HorizontalOptions="End"
+                                    Source="SearchIcon.png"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </Frame>
+                        <ScrollView
+                            Grid.Row="1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <CollectionView
+                                    Margin="15"
+                                    HorizontalOptions="FillAndExpand"
+                                    ItemsSource="{Binding Friends}">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout
+                                            HorizontalItemSpacing="10"
+                                            Orientation="Vertical"
+                                            Span="3"
+                                            VerticalItemSpacing="10" />
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.EmptyView>
+                                        <StackLayout>
+                                            <Label
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="No result found."
+                                                TextColor="Gray"
+                                                VerticalOptions="CenterAndExpand" />
+                                        </StackLayout>
+                                    </CollectionView.EmptyView>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame
+                                                Padding="0,10,0,10"
+                                                BackgroundColor="#30C4C4C4"
+                                                BorderColor="{DynamicResource BorderColor}"
+                                                CornerRadius="5"
+                                                HasShadow="False"
+                                                HorizontalOptions="StartAndExpand">
+                                                <StackLayout HorizontalOptions="CenterAndExpand">
+                                                    <Frame
+                                                        Padding="0"
+                                                        BackgroundColor="{DynamicResource Transparent}"
+                                                        CornerRadius="33"
+                                                        HasShadow="False"
+                                                        HeightRequest="66"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        IsClippedToBounds="True"
+                                                        WidthRequest="66">
+                                                        <Image Aspect="AspectFill" Source="{Binding Profile}" />
+                                                    </Frame>
+                                                    <Label
+                                                        Margin="0,2,0,0"
+                                                        FontFamily="{StaticResource MonumentRegular}"
+                                                        FontSize="10"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Text="{Binding Username}"
+                                                        TextColor="{DynamicResource Black}" />
+                                                </StackLayout>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+                        </ScrollView>
+                        <Frame
+                            Grid.Row="2"
+                            Margin="5,0,5,10"
+                            Padding="0"
+                            BackgroundColor="{DynamicResource PrimaryBtnColor}"
+                            CornerRadius="5"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="EndAndExpand">
+                            <Label
+                                Margin="15"
+                                FontFamily="{StaticResource MonumentRegular}"
+                                FontSize="14"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static resource:DFResources.ShareWithFriendText}"
+                                TextColor="{DynamicResource White}" />
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ShareCommand}" NumberOfTapsRequired="1" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddFriendCommand}" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

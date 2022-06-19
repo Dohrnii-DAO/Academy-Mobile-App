@@ -493,4 +493,19 @@
   <ItemGroup>
     <BundleResource Include="Resources\silverBadge.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\friendsJellyfish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\RedDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\BlueUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\AddFriend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SearchIcon.png" />
+  </ItemGroup>
 </Project>

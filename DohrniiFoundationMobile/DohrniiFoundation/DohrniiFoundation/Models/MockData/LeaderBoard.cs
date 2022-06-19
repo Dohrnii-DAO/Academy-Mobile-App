@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DohrniiFoundation.Models.MockData
 {
+    [AddINotifyPropertyChangedInterface]
     public class LeaderBoard
     {
         public string Username { get; set; }

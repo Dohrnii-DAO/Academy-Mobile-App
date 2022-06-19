@@ -25,7 +25,7 @@ namespace DohrniiFoundation.Views.Socials
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await socialVM.GetLeaders();
+            await socialVM.LoadData("Today");
         }
     }
 }

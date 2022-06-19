@@ -7,11 +7,12 @@
     <Color x:Key="LeaderboardItemBgColor">#F1ECFE</Color>
     <Color x:Key="PrimaryBtnColor">#7B98FE</Color>
     <Color x:Key="BorderColor">#C4C4C4</Color>
-    <Color x:Key="PrimaryLighterColor">#1261A0</Color>
+    <Color x:Key="FriendsItemBgColor">#E7EEF4</Color>
     <Color x:Key="Black">#000000</Color>
     <Color x:Key="PrimaryBgColor">#E7EBEC</Color>
     <Color x:Key="White">#ffffff</Color>
     <Color x:Key="Grey">#dddddd</Color>
+    <Color x:Key="DarkText">#070707</Color>
     <Color x:Key="Transparent">#00000000</Color>
 
     <LinearGradientBrush x:Key="LightGradient" StartPoint="0,0" EndPoint="0,1">
@@ -30,7 +31,7 @@
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="FriendsBGGradient" StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Offset="0.1" Color="#99CFFE" />
+        <GradientStop Offset="0.1" Color="#8099CFFE" />
         <GradientStop Offset="1.0" Color="#89B1FE" />
     </LinearGradientBrush>
 

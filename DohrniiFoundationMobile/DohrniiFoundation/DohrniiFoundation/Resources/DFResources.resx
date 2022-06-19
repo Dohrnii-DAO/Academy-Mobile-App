@@ -780,4 +780,7 @@
   <data name="SocialText" xml:space="preserve">
     <value>Social</value>
   </data>
+  <data name="ShareWithFriendText" xml:space="preserve">
+    <value>Share invite with friends</value>
+  </data>
 </root>

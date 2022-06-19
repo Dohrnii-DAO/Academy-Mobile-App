@@ -9,5 +9,6 @@ namespace DohrniiFoundation.IServices
     public interface IMockDataService
     {
         Task<List<LeaderBoard>> GetLeaderboard(string period);
+        Task<List<Friend>> GetFriends();
     }
 }

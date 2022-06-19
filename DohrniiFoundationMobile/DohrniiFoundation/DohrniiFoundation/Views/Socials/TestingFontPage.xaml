@@ -4,14 +4,17 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    ios:Page.UseSafeArea="True"
-    xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Socials">
+    xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Socials"
+    ios:Page.UseSafeArea="True">
     <ContentPage.BindingContext>
         <vm:TestingFontViewModel x:Name="fontVM" />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="20,0,20,0">
-            <StackLayout BackgroundColor="{DynamicResource White}" Orientation="Horizontal">
+        <StackLayout>
+            <StackLayout
+                Padding="20,0,20,0"
+                BackgroundColor="{DynamicResource White}"
+                Orientation="Horizontal">
                 <Image
                     HeightRequest="24"
                     Source="BackArrow.png"
@@ -23,13 +26,13 @@
                 </Image>
                 <Label
                     Style="{StaticResource SocialHeaderTextStyle}"
-                    Text="Class 2"
+                    Text="Class 1"
                     VerticalOptions="Center" />
             </StackLayout>
             <WebView
                 x:Name="webview"
-                Source="{Binding HtmlWebViewSource}"
                 HorizontalOptions="FillAndExpand"
+                Source="{Binding ClassUrl}"
                 VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage.Content>

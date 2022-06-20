@@ -13,7 +13,6 @@ using Plugin.Permissions.Abstractions;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -180,7 +179,7 @@ namespace DohrniiFoundation.ViewModels.Lessons
                         Password = Password,
                         ProfileImage = ProfileImageBase64String
                     };
-                    int userId = Preferences.Get(StringConstant.UserId, 0) == 0 ? 0 : Preferences.Get(StringConstant.UserId, 0);
+                    int userId = Xamarin.Essentials.Preferences.Get(StringConstant.UserId, 0) == 0 ? 0 : Xamarin.Essentials.Preferences.Get(StringConstant.UserId, 0);
                     UpdateProfileResponseModel updateProfileResponseModel = await aPIService.UpdateProfileService(changePasswordRequestModel, userId);
                     if (updateProfileResponseModel != null)
                     {

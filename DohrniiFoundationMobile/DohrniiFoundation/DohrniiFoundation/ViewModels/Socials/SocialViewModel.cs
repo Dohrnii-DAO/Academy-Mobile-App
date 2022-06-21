@@ -63,7 +63,7 @@ namespace DohrniiFoundation.ViewModels.Socials
                 WeeklyCommand = new Command(WeeklyClick);
                 MonthlyCommand = new Command(MonthlyClick);
                 AddFriendCommand = new Command(AddFriendClick);
-                PendingCommand = new Command(AddFriendClick);
+                PendingCommand = new Command(PendingRequestClick);
                 ShareCommand = new Command(ShareClick);
                 FilterUserCommand = new Command(FilterTextChanged);
                 aPIService = new APIServices();

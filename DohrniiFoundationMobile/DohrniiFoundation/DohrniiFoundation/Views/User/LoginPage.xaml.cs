@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,6 +15,11 @@ namespace DohrniiFoundation.Views
             try
             {
                 InitializeComponent();
+                if (Debugger.IsAttached)
+                {
+                    emailEntry.Text = "sylvester@dohrnii.io";
+                    passwordEntry.Text = "@Justme12";
+                }
             }
             catch (Exception ex)
             {

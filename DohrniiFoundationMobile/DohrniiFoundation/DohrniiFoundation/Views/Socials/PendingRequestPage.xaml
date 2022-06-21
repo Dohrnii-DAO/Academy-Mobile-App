@@ -2,8 +2,32 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="DohrniiFoundation.Views.Socials.PendingRequestPage">
+    xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+    x:Class="DohrniiFoundation.Views.Socials.PendingRequestPage"
+    xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Socials"
+    xmlns:helper="clr-namespace:DohrniiFoundation.Helpers"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="{DynamicResource PrimaryBgColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm:PendingRequestViewModel x:Name="pendingRequestVM" />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0" HeightRequest="70">
+                <ImageButton Margin="16,0,0,0" Source="{x:Static helper:StringConstant.BackArrow}" Opacity="0.6" BackgroundColor="Transparent" HeightRequest="25" WidthRequest="25" HorizontalOptions="StartAndExpand" Command="{Binding BackCommand}" CommandParameter="{Binding .}"/>
+                <Label Text="{x:Static resource:DFResources.ModulesText}" FontSize="17" FontFamily="{StaticResource MonumentRegular}" TextTransform="Uppercase" TextColor="{StaticResource BlackTextColor}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            </Grid>
+            <StackLayout Grid.Row="1">
+                <Label Text="Hello"/>
+
+            </StackLayout>
+        </Grid>
         
     </ContentPage.Content>
 </ContentPage>

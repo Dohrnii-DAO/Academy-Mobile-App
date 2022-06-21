@@ -2657,11 +2657,14 @@
   <project key="1375447702">
     <configuration>DEBUG;__XAMARIN_ANDROID_v1_0__;__MOBILE__;__ANDROID__;__ANDROID_1__;__ANDROID_2__;__ANDROID_3__;__ANDROID_4__;__ANDROID_5__;__ANDROID_6__;__ANDROID_7__;__ANDROID_8__;__ANDROID_9__;__ANDROID_10__;__ANDROID_11__;__ANDROID_12__;__ANDROID_13__;__ANDROID_14__;__ANDROID_15__;__ANDROID_16__;__ANDROID_17__;__ANDROID_18__;__ANDROID_19__;__ANDROID_20__;__ANDROID_21__;__ANDROID_22__;__ANDROID_23__;__ANDROID_24__;__ANDROID_25__;__ANDROID_26__;__ANDROID_27__;__ANDROID_28__;__ANDROID_29__;__ANDROID_30__</configuration>
   </project>
+  <project key="1477890219">
+    <configuration>DEBUG;__XAMARIN_ANDROID_v1_0__;__MOBILE__;__ANDROID__;__ANDROID_1__;__ANDROID_2__;__ANDROID_3__;__ANDROID_4__;__ANDROID_5__;__ANDROID_6__;__ANDROID_7__;__ANDROID_8__;__ANDROID_9__;__ANDROID_10__;__ANDROID_11__;__ANDROID_12__;__ANDROID_13__;__ANDROID_14__;__ANDROID_15__;__ANDROID_16__;__ANDROID_17__;__ANDROID_18__;__ANDROID_19__;__ANDROID_20__;__ANDROID_21__;__ANDROID_22__;__ANDROID_23__;__ANDROID_24__;__ANDROID_25__;__ANDROID_26__;__ANDROID_27__;__ANDROID_28__;__ANDROID_29__;__ANDROID_30__</configuration>
+  </project>
   <sourcecode name="MainActivity.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/19 22:09:43.939</sourceFile>
+      <sourceFile>2022/06/20 15:23:37.009</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -2772,8 +2775,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>16</line>
-        <index>607</index>
-        <endIndex>650</endIndex>
+        <index>592</index>
+        <endIndex>635</endIndex>
         <startLine>16</startLine>
         <startColumn>6</startColumn>
         <endLine>16</endLine>
@@ -2803,8 +2806,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to TabLayoutResource must begin with the 'this.', 'base.', 'object.' or 'MainActivity.' or 'global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity.' prefix to indicate the intended method call. </context>
         <line>33</line>
-        <index>1542</index>
-        <endIndex>1558</endIndex>
+        <index>1510</index>
+        <endIndex>1526</endIndex>
         <startLine>33</startLine>
         <startColumn>13</startColumn>
         <endLine>33</endLine>
@@ -2814,8 +2817,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to ToolbarResource must begin with the 'this.', 'base.', 'object.' or 'MainActivity.' or 'global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity.' prefix to indicate the intended method call. </context>
         <line>34</line>
-        <index>1599</index>
-        <endIndex>1613</endIndex>
+        <index>1566</index>
+        <endIndex>1580</endIndex>
         <startLine>34</startLine>
         <startColumn>13</startColumn>
         <endLine>34</endLine>
@@ -2825,8 +2828,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to LoadApplication must begin with the 'this.', 'base.', 'object.' or 'MainActivity.' or 'global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity.' prefix to indicate the intended method call. </context>
         <line>45</line>
-        <index>2404</index>
-        <endIndex>2418</endIndex>
+        <index>2360</index>
+        <endIndex>2374</endIndex>
         <startLine>45</startLine>
         <startColumn>13</startColumn>
         <endLine>45</endLine>
@@ -2894,7 +2897,7 @@
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/19 22:09:43.941</sourceFile>
+      <sourceFile>2022/06/20 15:23:37.009</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -2948,7 +2951,7 @@
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/19 22:09:43.941</sourceFile>
+      <sourceFile>2022/06/20 15:23:37.009</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -2989,8 +2992,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to Control must begin with the 'this.', 'base.', 'object.' or 'NoOutlineEntryRenderer.' or 'EntryRenderer.' prefix to indicate the intended method call. </context>
         <line>26</line>
-        <index>822</index>
-        <endIndex>828</endIndex>
+        <index>797</index>
+        <endIndex>803</endIndex>
         <startLine>26</startLine>
         <startColumn>17</startColumn>
         <endLine>26</endLine>
@@ -3003,7 +3006,7 @@
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/19 22:09:43.942</sourceFile>
+      <sourceFile>2022/06/20 15:23:37.010</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -3064,8 +3067,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to UpdateCornerRadius must begin with the 'this.', 'base.', 'object.' or 'TopTwoCornerFrameRenderer.' or 'FrameRenderer.' prefix to indicate the intended method call. </context>
         <line>27</line>
-        <index>943</index>
-        <endIndex>960</endIndex>
+        <index>917</index>
+        <endIndex>934</endIndex>
         <startLine>27</startLine>
         <startColumn>17</startColumn>
         <endLine>27</endLine>
@@ -3075,8 +3078,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to Control must begin with the 'this.', 'base.', 'object.' or 'TopTwoCornerFrameRenderer.' or 'FrameRenderer.' prefix to indicate the intended method call. </context>
         <line>25</line>
-        <index>894</index>
-        <endIndex>900</endIndex>
+        <index>870</index>
+        <endIndex>876</endIndex>
         <startLine>25</startLine>
         <startColumn>41</startColumn>
         <endLine>25</endLine>
@@ -3091,8 +3094,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to UpdateCornerRadius must begin with the 'this.', 'base.', 'object.' or 'TopTwoCornerFrameRenderer.' or 'FrameRenderer.' prefix to indicate the intended method call. </context>
         <line>38</line>
-        <index>1333</index>
-        <endIndex>1350</endIndex>
+        <index>1296</index>
+        <endIndex>1313</endIndex>
         <startLine>38</startLine>
         <startColumn>17</startColumn>
         <endLine>38</endLine>
@@ -3102,8 +3105,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to TopTwoCornerFrame must begin with the 'this.', 'base.', 'object.' or 'TopTwoCornerFrameRenderer.' or 'FrameRenderer.' prefix to indicate the intended method call. </context>
         <line>36</line>
-        <index>1281</index>
-        <endIndex>1297</endIndex>
+        <index>1246</index>
+        <endIndex>1262</endIndex>
         <startLine>36</startLine>
         <startColumn>42</startColumn>
         <endLine>36</endLine>
@@ -3121,7 +3124,7 @@
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/19 22:09:43.940</sourceFile>
+      <sourceFile>2022/06/20 15:23:37.009</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -3155,7 +3158,7 @@
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/19 22:09:44.133</sourceFile>
+      <sourceFile>2022/06/20 15:23:37.089</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -3204,7 +3207,7 @@
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/19 22:09:44.134</sourceFile>
+      <sourceFile>2022/06/20 15:23:37.089</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -3253,7 +3256,7 @@
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/19 22:09:44.134</sourceFile>
+      <sourceFile>2022/06/20 15:23:37.090</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -3319,8 +3322,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to StartActivity must begin with the 'this.', 'base.', 'object.' or 'SplashActivity.' or 'AppCompatActivity.' prefix to indicate the intended method call. </context>
         <line>18</line>
-        <index>595</index>
-        <endIndex>607</endIndex>
+        <index>578</index>
+        <endIndex>590</endIndex>
         <startLine>18</startLine>
         <startColumn>13</startColumn>
         <endLine>18</endLine>
@@ -3333,7 +3336,7 @@
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/19 22:59:35.511</sourceFile>
+      <sourceFile>2022/06/20 15:34:34.086</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -3356,7 +3359,7 @@
     <timestamps>
       <styleCop>2019/04/08 21:27:32.000</styleCop>
       <settingsFile>2019/04/08 21:27:32.000</settingsFile>
-      <sourceFile>2022/06/20 01:40:00.979</sourceFile>
+      <sourceFile>2022/06/20 15:34:33.996</sourceFile>
       <parser>2019/04/08 21:27:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2019/04/08 21:27:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>

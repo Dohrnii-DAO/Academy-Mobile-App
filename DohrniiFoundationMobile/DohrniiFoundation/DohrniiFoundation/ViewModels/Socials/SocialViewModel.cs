@@ -37,6 +37,7 @@ namespace DohrniiFoundation.ViewModels.Socials
         public ICommand WeeklyCommand { get; set; }
         public ICommand MonthlyCommand { get; set; }
         public ICommand AddFriendCommand { get; set; }
+        public ICommand PendingCommand { get; set; }
         public ICommand ShareCommand { get; set; }
         public ICommand FilterUserCommand { get; set; }
         public ObservableCollection<LeaderBoard> LeaderBoards { get; set; }
@@ -62,6 +63,7 @@ namespace DohrniiFoundation.ViewModels.Socials
                 WeeklyCommand = new Command(WeeklyClick);
                 MonthlyCommand = new Command(MonthlyClick);
                 AddFriendCommand = new Command(AddFriendClick);
+                PendingCommand = new Command(AddFriendClick);
                 ShareCommand = new Command(ShareClick);
                 FilterUserCommand = new Command(FilterTextChanged);
                 aPIService = new APIServices();
@@ -164,6 +166,20 @@ namespace DohrniiFoundation.ViewModels.Socials
             }
         }
 
+        private async void PendingRequestClick()
+        {
+            try
+            {
+                IsLoading = true;
+                await Application.Current.MainPage.Navigation.PushModalAsync(new PendingRequestPage());
+                IsLoading = false;
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
+
         private async void ShareClick()
         {
             try
@@ -214,7 +230,7 @@ namespace DohrniiFoundation.ViewModels.Socials
                 AllFriends = new ObservableCollection<Friend>(friends);
                 Friends = new ObservableCollection<Friend>(friends);
 
-                var users = await socialService.GetFriends();
+                //var users = await socialService.GetFriends();
             }
             catch (Exception ex)
             {

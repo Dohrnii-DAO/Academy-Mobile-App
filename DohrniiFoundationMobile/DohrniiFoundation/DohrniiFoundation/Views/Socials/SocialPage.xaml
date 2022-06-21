@@ -466,27 +466,50 @@
                             HasShadow="False">
 
                             <StackLayout>
-                                <Frame
-                                    Margin="0,0,0,10"
-                                    Padding="0"
-                                    BackgroundColor="{DynamicResource FriendsItemBgColor}"
-                                    BorderColor="{DynamicResource BorderColor}"
-                                    CornerRadius="5"
-                                    HasShadow="False"
-                                    HorizontalOptions="EndAndExpand">
-                                    <StackLayout Margin="5" Orientation="Horizontal">
-                                        <Image Source="AddFriend.png" />
-                                        <Label
-                                            FontFamily="{StaticResource MonumentRegular}"
-                                            FontSize="8"
-                                            Text="Add Friend"
-                                            TextColor="{DynamicResource DarkText}"
-                                            VerticalOptions="CenterAndExpand" />
-                                    </StackLayout>
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding AddFriendCommand}" NumberOfTapsRequired="1" />
-                                    </Frame.GestureRecognizers>
-                                </Frame>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Frame
+                                        Margin="0,0,0,10"
+                                        Padding="0"
+                                        BackgroundColor="{DynamicResource FriendsItemBgColor}"
+                                        BorderColor="{DynamicResource BorderColor}"
+                                        CornerRadius="5"
+                                        HasShadow="False"
+                                        HorizontalOptions="StartAndExpand">
+                                        <StackLayout Margin="5" Orientation="Horizontal">
+                                            <Image Source="AddFriend.png" />
+                                            <Label
+                                                FontFamily="{StaticResource MonumentRegular}"
+                                                FontSize="8"
+                                                Text="Add Friend"
+                                                TextColor="{DynamicResource DarkText}"
+                                                VerticalOptions="CenterAndExpand" />
+                                        </StackLayout>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding AddFriendCommand}" NumberOfTapsRequired="1" />
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                    <Frame
+                                        Margin="0,0,0,10"
+                                        Padding="0"
+                                        BackgroundColor="{DynamicResource FriendsItemBgColor}"
+                                        BorderColor="{DynamicResource BorderColor}"
+                                        CornerRadius="5"
+                                        HasShadow="False"
+                                        HorizontalOptions="EndAndExpand">
+                                        <StackLayout Margin="5" Orientation="Horizontal">
+                                            <Image Source="AddFriend.png" />
+                                            <Label
+                                                FontFamily="{StaticResource MonumentRegular}"
+                                                FontSize="8"
+                                                Text="Pending Request"
+                                                TextColor="{DynamicResource DarkText}"
+                                                VerticalOptions="CenterAndExpand" />
+                                        </StackLayout>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding PendingCommand}" NumberOfTapsRequired="1" />
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                </StackLayout>
                                 <StackLayout
                                     BindableLayout.ItemsSource="{Binding Friends}"
                                     HorizontalOptions="FillAndExpand"

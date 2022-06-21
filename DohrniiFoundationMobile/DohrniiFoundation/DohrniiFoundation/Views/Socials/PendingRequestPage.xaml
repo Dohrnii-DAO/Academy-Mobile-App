@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="DohrniiFoundation.Views.Socials.PendingRequestPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
-    x:Class="DohrniiFoundation.Views.Socials.PendingRequestPage"
-    xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Socials"
     xmlns:helper="clr-namespace:DohrniiFoundation.Helpers"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:resource="clr-namespace:DohrniiFoundation.Resources"
+    xmlns:vm="clr-namespace:DohrniiFoundation.ViewModels.Socials"
     ios:Page.UseSafeArea="True"
     BackgroundColor="{DynamicResource PrimaryBgColor}"
     NavigationPage.HasNavigationBar="False">
@@ -16,19 +16,41 @@
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0" HeightRequest="70">
-                <ImageButton Margin="16,0,0,0" Source="{x:Static helper:StringConstant.BackArrow}" Opacity="0.6" BackgroundColor="Transparent" HeightRequest="25" WidthRequest="25" HorizontalOptions="StartAndExpand" Command="{Binding BackCommand}" CommandParameter="{Binding .}"/>
-                <Label Text="{x:Static resource:DFResources.ModulesText}" FontSize="17" FontFamily="{StaticResource MonumentRegular}" TextTransform="Uppercase" TextColor="{StaticResource BlackTextColor}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            <Grid
+                Grid.Row="0"
+                Padding="0"
+                HeightRequest="70"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand">
+                <ImageButton
+                    Margin="16,0,0,0"
+                    BackgroundColor="Transparent"
+                    Command="{Binding BackCommand}"
+                    CommandParameter="{Binding .}"
+                    HeightRequest="25"
+                    HorizontalOptions="StartAndExpand"
+                    Opacity="0.6"
+                    Source="{x:Static helper:StringConstant.BackArrow}"
+                    WidthRequest="25" />
+                <Label
+                    FontFamily="{StaticResource MonumentRegular}"
+                    FontSize="17"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{x:Static resource:DFResources.ModulesText}"
+                    TextColor="{StaticResource BlackTextColor}"
+                    TextTransform="Uppercase"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
             </Grid>
             <StackLayout Grid.Row="1">
-                <Label Text="Hello"/>
-
+                <Label Text="Hello" />
             </StackLayout>
         </Grid>
-        
+
     </ContentPage.Content>
 </ContentPage>
 

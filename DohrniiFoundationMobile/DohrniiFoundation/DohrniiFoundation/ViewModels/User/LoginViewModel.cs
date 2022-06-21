@@ -330,13 +330,13 @@ namespace DohrniiFoundation.ViewModels.User
                                 Preferences.Set(DFResources.AccessTokenText, responseModel.Token);
                                 Preferences.Set(DFResources.AccessTokenExpiryText, responseModel.Expires_in);
                                 UserDetailsApi();
-                                //var resp = await userService.Login(loginRequestModel);
-                                //if (!string.IsNullOrEmpty(resp.Access))
-                                //{
-                                //    //Preferences.Set("accessToken", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU2MDYwMTI4LCJpYXQiOjE2NTU2MjgxMjgsImp0aSI6ImU1OTBiZjVkZmE2MjQ1M2ZhM2I1MDI3Mjg0MDExNjg3IiwidXNlcl9pZCI6Mn0.vlXjYqgvR7DWw20NGZH1-cwD5KRt8zCkHYpT611Aodk");
-                                //    Preferences.Set("accesToken", resp.Access);
-                                //}
-                                
+                                var resp = await userService.Login(loginRequestModel);
+                                if (!string.IsNullOrEmpty(resp.Access))
+                                {
+                                    //Preferences.Set("accessToken", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU2MDYwMTI4LCJpYXQiOjE2NTU2MjgxMjgsImp0aSI6ImU1OTBiZjVkZmE2MjQ1M2ZhM2I1MDI3Mjg0MDExNjg3IiwidXNlcl9pZCI6Mn0.vlXjYqgvR7DWw20NGZH1-cwD5KRt8zCkHYpT611Aodk");
+                                    Preferences.Set("accesToken", resp.Access);
+                                }
+
                                 //REMARK: Handle condition to navigate on Lessons Onboarding screen for new user
                                 if (responseModel.IsNewUser == 1 )
                                 {

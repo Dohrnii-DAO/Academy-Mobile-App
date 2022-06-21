@@ -466,7 +466,7 @@
                             HasShadow="False">
 
                             <StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <Frame
                                         Margin="0,0,0,10"
                                         Padding="0"
@@ -708,7 +708,7 @@
                                 <CollectionView
                                     Margin="15"
                                     HorizontalOptions="FillAndExpand"
-                                    ItemsSource="{Binding Friends}">
+                                    ItemsSource="{Binding Users}">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout
                                             HorizontalItemSpacing="10"

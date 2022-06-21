@@ -6,6 +6,9 @@
     <SccAuxPath>https://tfs01.chetu.com/tfs/chetuprojects</SccAuxPath>
     <SccLocalPath>.</SccLocalPath>
   </PropertyGroup>
+  <PropertyGroup>
+	<NoWarn>NU1701</NoWarn>
+  </PropertyGroup>
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -53,7 +56,7 @@
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.0.9" />
     <PackageReference Include="Xamarin.Auth" Version="1.6.0.4" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.10.972" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" NoWarn="NU1701" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <PackageReference Include="Xamarin.RangeSlider" Version="1.0.1" />
     <PackageReference Include="YoutubeExplode" Version="6.0.7" />

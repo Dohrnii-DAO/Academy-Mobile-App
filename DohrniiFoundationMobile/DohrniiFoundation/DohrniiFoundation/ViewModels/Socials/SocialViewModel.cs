@@ -1,6 +1,7 @@
 ﻿using DohrniiFoundation.Helpers;
 using DohrniiFoundation.IServices;
 using DohrniiFoundation.Models.MockData;
+using DohrniiFoundation.Models.Socials;
 using DohrniiFoundation.Services;
 using DohrniiFoundation.Views.Socials;
 using Microsoft.AppCenter.Crashes;
@@ -43,6 +44,7 @@ namespace DohrniiFoundation.ViewModels.Socials
         public ObservableCollection<LeaderBoard> LeaderBoards { get; set; }
         public ObservableCollection<Friend> AllFriends { get; set; }
         public ObservableCollection<Friend> Friends { get; set; }
+        public ObservableCollection<User> Users { get; set; }
         public string TodayBgColor { get; set; }
         public string WeeklyBgColor { get; set; }
         public string MonthlyBgColor { get; set; }

@@ -8,7 +8,7 @@ namespace DohrniiFoundation.IServices
 {
     public interface ISocialService
     {
-        Task<List<User>> GetFriends();
+        Task<List<AppUser>> GetFriends();
         Task<List<FriendRequest>> GetFriendRequests();
     }
 }

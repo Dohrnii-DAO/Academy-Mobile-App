@@ -1,5 +1,5 @@
 ﻿using DohrniiFoundation.IServices;
-using Refit;
+//using Refit;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -13,23 +13,23 @@ namespace DohrniiFoundation.Helpers
 {
     public static class RefitHelper
     {
-        public static IRestService GetService()
-        {
-            string baseUrl = "http://10.0.2.2:8000/backend/api";
-            IRestService restClient = null;
+        //public static IRestService GetService()
+        //{
+        //    string baseUrl = "http://10.0.2.2:8000/backend/api";
+        //    IRestService restClient = null;
 
-            var token = Preferences.Get("accessToken", string.Empty);
-            if (string.IsNullOrEmpty(token))
-            {
-                restClient = RestService.For<IRestService>(baseUrl);
-            }
-            else
-            {
-                var httpClient = new HttpClient(new AuthHeaderHandler()) { BaseAddress = new Uri(baseUrl) };
-                restClient = RestService.For<IRestService>(httpClient);
-            }
-            return restClient;
-        }
+        //    var token = Preferences.Get("accessToken", string.Empty);
+        //    if (string.IsNullOrEmpty(token))
+        //    {
+        //        restClient = RestService.For<IRestService>(baseUrl);
+        //    }
+        //    else
+        //    {
+        //        var httpClient = new HttpClient(new AuthHeaderHandler()) { BaseAddress = new Uri(baseUrl) };
+        //        restClient = RestService.For<IRestService>(httpClient);
+        //    }
+        //    return restClient;
+        //}
     }
 
     public class AuthHeaderHandler : DelegatingHandler

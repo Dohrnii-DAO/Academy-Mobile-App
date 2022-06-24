@@ -29,6 +29,7 @@ namespace DohrniiFoundation.ViewModels.Socials
         private static IAPIService aPIService;
         private static IMockDataService mockDataService;
         private static ISocialService socialService;
+        private static IUserService userService;
 
         #endregion
 
@@ -44,7 +45,7 @@ namespace DohrniiFoundation.ViewModels.Socials
         public ObservableCollection<LeaderBoard> LeaderBoards { get; set; }
         public ObservableCollection<Friend> AllFriends { get; set; }
         public ObservableCollection<Friend> Friends { get; set; }
-        public ObservableCollection<User> Users { get; set; }
+        public List<AppUser> AppUsers { get; set; }
         public string TodayBgColor { get; set; }
         public string WeeklyBgColor { get; set; }
         public string MonthlyBgColor { get; set; }
@@ -70,6 +71,7 @@ namespace DohrniiFoundation.ViewModels.Socials
                 FilterUserCommand = new Command(FilterTextChanged);
                 aPIService = new APIServices();
                 socialService = new SocialService();
+                userService = new UserService();
                 mockDataService = new MockDataService();
                 TodayBgColor = StringConstant.PrimaryBtnColor;
                 WeeklyBgColor = StringConstant.Transparent;
@@ -232,7 +234,7 @@ namespace DohrniiFoundation.ViewModels.Socials
                 AllFriends = new ObservableCollection<Friend>(friends);
                 Friends = new ObservableCollection<Friend>(friends);
 
-                //var users = await socialService.GetFriends();
+                AppUsers = await userService.GetUsers();
             }
             catch (Exception ex)
             {

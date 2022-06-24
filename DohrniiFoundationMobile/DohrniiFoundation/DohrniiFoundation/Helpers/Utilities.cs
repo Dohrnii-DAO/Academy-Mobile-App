@@ -34,6 +34,13 @@ namespace DohrniiFoundation.Helpers
         #endregion       
 
         #region Public Properties
+        public static string AccessToken
+        {
+            get
+            {
+                return Preferences.Get("accessToken", string.Empty);
+            }
+        }
         /// <summary>
         /// Property to handle the refresh token API when the access token expires
         /// </summary>

@@ -7,7 +7,7 @@ using System.Text;
 namespace DohrniiFoundation.Models.Socials
 {
     [AddINotifyPropertyChangedInterface]
-    public class User
+    public class AppUser
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -17,5 +17,6 @@ namespace DohrniiFoundation.Models.Socials
 
         [JsonProperty("last_name")]
         public string LastName { get; set; }
+        public string Avatar { get; set; }
     }
 }

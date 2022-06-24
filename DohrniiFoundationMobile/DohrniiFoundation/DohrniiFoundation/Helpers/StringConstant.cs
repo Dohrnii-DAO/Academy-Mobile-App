@@ -45,6 +45,12 @@ namespace DohrniiFoundation.Helpers
         public const string SubmitChapterQuizApiEndPoint = "/api/chapter/quiz/attampt";
         public const string ConvertToCryptoJellyApiEndPoint = "/api/convert/xp/cryptojelly";
         public const string UpdateProfileApiEndPoint = "/api/user/update/";
+
+
+        public const string APIBaseURL = "http://10.0.2.2:8000/backend/api";
+        public const string APIBaseBearer = "Bearer";
+        public const string LoginEndPoint = "/auth/token/";
+        public const string UsersEndPoint = "/users/";
         #endregion
 
         #region Images and Gif 

@@ -11,7 +11,7 @@ namespace DohrniiFoundation.IServices
     public interface IUserService
     {
         Task<LoginResponse> Login(LoginRequestModel loginRequest);
-        Task<List<User>> GetUsers();
-        Task<User> GetUsers(int id);
+        Task<List<AppUser>> GetUsers();
+        Task<AppUser> GetUsers(int id);
     }
 }

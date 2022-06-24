@@ -708,7 +708,7 @@
                                 <CollectionView
                                     Margin="15"
                                     HorizontalOptions="FillAndExpand"
-                                    ItemsSource="{Binding Users}">
+                                    ItemsSource="{Binding AppUsers}">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout
                                             HorizontalItemSpacing="10"
@@ -744,14 +744,14 @@
                                                         HorizontalOptions="CenterAndExpand"
                                                         IsClippedToBounds="True"
                                                         WidthRequest="66">
-                                                        <Image Aspect="AspectFill" Source="{Binding Profile}" />
+                                                        <Image Aspect="AspectFill" Source="{Binding Avatar}" />
                                                     </Frame>
                                                     <Label
                                                         Margin="0,2,0,0"
                                                         FontFamily="{StaticResource MonumentRegular}"
                                                         FontSize="10"
                                                         HorizontalOptions="CenterAndExpand"
-                                                        Text="{Binding Username}"
+                                                        Text="{Binding FirstName}"
                                                         TextColor="{DynamicResource Black}" />
                                                 </StackLayout>
                                             </Frame>

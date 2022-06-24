@@ -1,37 +1,82 @@
 ﻿using DohrniiFoundation.Helpers;
 using DohrniiFoundation.IServices;
 using DohrniiFoundation.Models.APIRequestModel;
+using DohrniiFoundation.Models.APIResponseModels;
 using DohrniiFoundation.Models.Socials;
 using DohrniiFoundation.Models.UserModels;
+using DohrniiFoundation.Resources;
+using Microsoft.AppCenter.Crashes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace DohrniiFoundation.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRestService _restClient;
+        //private readonly IRestService _restClient;
+        //public UserService()
+        //{
+        //    _restClient = RefitHelper.GetService();
+        //}
+        #region Private Members
+        private static ServiceHelpers serviceHelpers;
+        #endregion
+
+        #region Constructor
         public UserService()
         {
-            _restClient = RefitHelper.GetService();
+            serviceHelpers = ServiceHelpers.Instance;
         }
+        #endregion
 
         public async Task<LoginResponse> Login(LoginRequestModel loginRequest)
         {
-            var resp = await _restClient.Login(loginRequest);
-            return resp;
+            LoginResponse loginResponse = new LoginResponse();
+            try
+            {
+                string serializedRequest = JsonConvert.SerializeObject(loginRequest);
+                ResponseModel response = await serviceHelpers.PostRequestAsync(serializedRequest, StringConstant.LoginEndPoint, true, null);
+                loginResponse = JsonConvert.DeserializeObject<LoginResponse>(response.Data);
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+
+            return loginResponse;
         }
 
-        public async Task<List<User>> GetUsers()
+        public async Task<List<AppUser>> GetUsers()
         {
-            return await _restClient.GetUsers();
+            List<AppUser> users = new List<AppUser>();
+            try
+            {
+                ResponseModel response = await serviceHelpers.GetRequestAsync(StringConstant.UsersEndPoint, false, Utilities.AccessToken);
+                if (response.IsSuccess)
+                {
+                    users = JsonConvert.DeserializeObject<List<AppUser>>(response.Data);
+                }
+                else
+                {
+                    var msg = JsonConvert.DeserializeObject<ErrorResponseModel>(response.Data);
+                    await Application.Current.MainPage.DisplayAlert(DFResources.AlertText, msg.Detail, DFResources.OKText);
+                }
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+
+            return users;
         }
 
-        public async Task<User> GetUsers(int id)
+        public async Task<AppUser> GetUsers(int id)
         {
-            return await _restClient.GetUsers(id);
+            return null;
         }
     }
 }

@@ -48,9 +48,13 @@ namespace DohrniiFoundation.Helpers
 
 
         public const string APIBaseURL = "http://10.0.2.2:8000/backend/api";
-        public const string APIBaseBearer = "Bearer";
+        public const string APIBaseBearer = "Bearer ";
         public const string LoginEndPoint = "/auth/token/";
         public const string UsersEndPoint = "/users/";
+        public const string UserEndPoint = "/users/{id}";
+        public const string AppUserEndPoint = "/users/me/";
+        public const string SendFriendRequestEndPoint = "/social/friends/request/{user_id}/";
+
         #endregion
 
         #region Images and Gif 

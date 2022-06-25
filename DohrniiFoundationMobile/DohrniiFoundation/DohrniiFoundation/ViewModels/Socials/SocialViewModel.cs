@@ -1,4 +1,5 @@
-﻿using DohrniiFoundation.Helpers;
+﻿using Acr.UserDialogs;
+using DohrniiFoundation.Helpers;
 using DohrniiFoundation.IServices;
 using DohrniiFoundation.Models.MockData;
 using DohrniiFoundation.Models.Socials;
@@ -46,6 +47,7 @@ namespace DohrniiFoundation.ViewModels.Socials
         public ObservableCollection<Friend> AllFriends { get; set; }
         public ObservableCollection<Friend> Friends { get; set; }
         public List<AppUser> AppUsers { get; set; }
+        public AppUser AppUser { get; set; }
         public string TodayBgColor { get; set; }
         public string WeeklyBgColor { get; set; }
         public string MonthlyBgColor { get; set; }
@@ -219,6 +221,36 @@ namespace DohrniiFoundation.ViewModels.Socials
             }
         }
 
+        public async Task InitData()
+        {
+            try
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = true;
+                });
+                var leaders = await mockDataService.GetLeaderboard("Today");
+                LeaderBoards = new ObservableCollection<LeaderBoard>(leaders);
+
+                var friends = await mockDataService.GetFriends();
+                AllFriends = new ObservableCollection<Friend>(friends);
+                Friends = new ObservableCollection<Friend>(friends);
+                AppUser = await userService.GetAppUser();
+                AppUsers = await userService.GetUsers();
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+            finally
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+        }
+
         public async Task LoadData(string period)
         {
             try
@@ -229,12 +261,34 @@ namespace DohrniiFoundation.ViewModels.Socials
                 });
                 var leaders = await mockDataService.GetLeaderboard(period);
                 LeaderBoards = new ObservableCollection<LeaderBoard>(leaders);
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+            finally
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+        }
 
-                var friends = await mockDataService.GetFriends();
-                AllFriends = new ObservableCollection<Friend>(friends);
-                Friends = new ObservableCollection<Friend>(friends);
-
-                AppUsers = await userService.GetUsers();
+        public async Task SendFriendRequest(AppUser user)
+        {
+            try
+            {
+                var sendRequest = await UserDialogs.Instance.ConfirmAsync($"You are about to send a friend request to {user.FirstName}.\n Do you wish to continue?", "Friend Request", "Yes", "Cancel");
+                if (sendRequest)
+                {
+                    IsLoading = true;
+                    var result = await socialService.SendFriendRequests(user.Id, new FriendRequest());
+                    if (result != null)
+                    {
+                        user.IsPendingRequest = true;
+                    }
+                }
             }
             catch (Exception ex)
             {

@@ -10,5 +10,6 @@ namespace DohrniiFoundation.IServices
     {
         Task<List<AppUser>> GetFriends();
         Task<List<FriendRequest>> GetFriendRequests();
+        Task<FriendRequest> SendFriendRequests(int userId, FriendRequest friendRequest);
     }
 }

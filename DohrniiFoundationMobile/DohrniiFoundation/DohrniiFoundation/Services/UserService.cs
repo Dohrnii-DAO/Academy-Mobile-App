@@ -17,11 +17,6 @@ namespace DohrniiFoundation.Services
 {
     public class UserService : IUserService
     {
-        //private readonly IRestService _restClient;
-        //public UserService()
-        //{
-        //    _restClient = RefitHelper.GetService();
-        //}
         #region Private Members
         private static ServiceHelpers serviceHelpers;
         #endregion
@@ -39,7 +34,7 @@ namespace DohrniiFoundation.Services
             try
             {
                 string serializedRequest = JsonConvert.SerializeObject(loginRequest);
-                ResponseModel response = await serviceHelpers.PostRequestAsync(serializedRequest, StringConstant.LoginEndPoint, true, null);
+                ResponseModel response = await serviceHelpers.PostRequestAsync(serializedRequest, StringConstant.LoginEndPoint, false, null);
                 loginResponse = JsonConvert.DeserializeObject<LoginResponse>(response.Data);
             }
             catch (Exception ex)
@@ -76,7 +71,50 @@ namespace DohrniiFoundation.Services
 
         public async Task<AppUser> GetUsers(int id)
         {
-            return null;
+            AppUser user = null;
+            try
+            {
+                ResponseModel response = await serviceHelpers.GetRequestAsync(StringConstant.UsersEndPoint.Replace("{id}",id.ToString()), false, Utilities.AccessToken);
+                if (response.IsSuccess)
+                {
+                    user = JsonConvert.DeserializeObject<AppUser>(response.Data);
+                }
+                else
+                {
+                    var msg = JsonConvert.DeserializeObject<ErrorResponseModel>(response.Data);
+                    await Application.Current.MainPage.DisplayAlert(DFResources.AlertText, msg.Detail, DFResources.OKText);
+                }
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+
+            return user;
+        }
+
+        public async Task<AppUser> GetAppUser()
+        {
+            AppUser user = null;
+            try
+            {
+                ResponseModel response = await serviceHelpers.GetRequestAsync(StringConstant.AppUserEndPoint, true, Utilities.AccessToken);
+                if (response.IsSuccess)
+                {
+                    user = JsonConvert.DeserializeObject<AppUser>(response.Data);
+                }
+                else
+                {
+                    var msg = JsonConvert.DeserializeObject<ErrorResponseModel>(response.Data);
+                    await Application.Current.MainPage.DisplayAlert(DFResources.AlertText, msg.Detail, DFResources.OKText);
+                }
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+
+            return user;
         }
     }
 }

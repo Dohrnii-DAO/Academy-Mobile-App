@@ -171,7 +171,7 @@
                                                 <TapGestureRecognizer Command="{Binding QuizCommand}" CommandParameter="{Binding .}"/>
                                             </Frame.GestureRecognizers>
                                         </Frame>
-                                        <pancake:PancakeView IsVisible="{Binding IsQuizCompleted,Mode=TwoWay}" Margin="16,8,16,16" HasShadow="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" CornerRadius="5" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                                        <pancake:PancakeView IsVisible="{Binding IsQuizCompleted,Mode=TwoWay}" Margin="16,8,16,16" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" CornerRadius="5" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
                                             <pancake:PancakeView.BackgroundGradientStops>
                                                 <pancake:GradientStopCollection>
                                                     <pancake:GradientStop Color="{StaticResource LessonBgColor}" Offset="0" />
@@ -197,7 +197,7 @@
                                                 </StackLayout>
                                                 <StackLayout Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="4">
-                                                        <pancake:PancakeView Padding="0" HasShadow="False" CornerRadius="5" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                                                        <pancake:PancakeView Padding="0" CornerRadius="5" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
                                                             <pancake:PancakeView.BackgroundGradientStops>
                                                                 <pancake:GradientStopCollection>
                                                                     <pancake:GradientStop Color="{StaticResource CompletedQuizBgColor2}" Offset="0" />
@@ -218,7 +218,7 @@
 
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="4">
-                                                        <pancake:PancakeView Padding="0" HasShadow="False" CornerRadius="5" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                                                        <pancake:PancakeView Padding="0" CornerRadius="5" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
                                                             <pancake:PancakeView.BackgroundGradientStops>
                                                                 <pancake:GradientStopCollection>
                                                                     <pancake:GradientStop Color="{StaticResource CompletedQuizBgColor4}" Offset="0" />

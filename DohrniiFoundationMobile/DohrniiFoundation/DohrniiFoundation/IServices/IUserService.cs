@@ -13,5 +13,6 @@ namespace DohrniiFoundation.IServices
         Task<LoginResponse> Login(LoginRequestModel loginRequest);
         Task<List<AppUser>> GetUsers();
         Task<AppUser> GetUsers(int id);
+        Task<AppUser> GetAppUser();
     }
 }

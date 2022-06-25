@@ -333,8 +333,7 @@ namespace DohrniiFoundation.ViewModels.User
                                 var resp = await userService.Login(loginRequestModel);
                                 if (!string.IsNullOrEmpty(resp.Access))
                                 {
-                                    //Preferences.Set("accessToken", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU2MDYwMTI4LCJpYXQiOjE2NTU2MjgxMjgsImp0aSI6ImU1OTBiZjVkZmE2MjQ1M2ZhM2I1MDI3Mjg0MDExNjg3IiwidXNlcl9pZCI6Mn0.vlXjYqgvR7DWw20NGZH1-cwD5KRt8zCkHYpT611Aodk");
-                                    Preferences.Set("accesToken", resp.Access);
+                                    Preferences.Set("accessToken", resp.Access);
                                 }
 
                                 //REMARK: Handle condition to navigate on Lessons Onboarding screen for new user
@@ -405,7 +404,7 @@ namespace DohrniiFoundation.ViewModels.User
         {
             try
             {
-                IsLoading = true;
+                //IsLoading = true;
                 //REMARK: Get the strategy assigned for the user if questionnaire is given
                 StrategyStatusResponseModel strategiesResponseModel = await aPIService.GetUserStatusService();
                 if (strategiesResponseModel != null)
@@ -439,10 +438,10 @@ namespace DohrniiFoundation.ViewModels.User
                 Crashes.TrackError(ex);
                 IsLoading = false;
             }
-            finally
-            {
-                IsLoading = false;
-            }
+            //finally
+            //{
+            //    IsLoading = false;
+            //}
         }
 
         /// <summary>

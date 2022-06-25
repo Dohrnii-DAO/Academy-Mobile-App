@@ -38,7 +38,7 @@
                     <StackLayout Margin="0,16,0,0" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid Margin="24,16" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                             <Label Text="{x:Static resource:DFResources.TokenreceivedText}" FontSize="8" VerticalTextAlignment="Center" TextTransform="Uppercase" FontFamily="{StaticResource MonumentRegular}" TextColor="{StaticResource BlackTextColor}"/>
-                            <pancake:PancakeView WidthRequest="65" CornerRadius="8" HasShadow="False" Padding="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                            <pancake:PancakeView WidthRequest="65" CornerRadius="8" Padding="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
                                 <pancake:PancakeView.BackgroundGradientStops>
                                     <pancake:GradientStopCollection>
                                         <pancake:GradientStop Color="{StaticResource LessonXPSecondColor}" Offset="0" />
@@ -67,7 +67,7 @@
                     </StackLayout>
                 </Frame>
             </Grid> 
-             <pancake:PancakeView IsVisible="{Binding SecondRandomGridVisible}" Padding="0" HasShadow="False" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+             <pancake:PancakeView IsVisible="{Binding SecondRandomGridVisible}" Padding="0" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
                         <pancake:PancakeView.BackgroundGradientStops>
                             <pancake:GradientStopCollection>
                                 <pancake:GradientStop Color="#FFB8A3" Offset="0" />
@@ -99,7 +99,7 @@
                         <StackLayout Margin="0,16,0,0" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Grid Margin="24,16" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                                 <Label Text="{x:Static resource:DFResources.TokenreceivedText}" FontSize="8" VerticalTextAlignment="Center" TextTransform="Uppercase" FontFamily="{StaticResource MonumentRegular}" TextColor="{StaticResource BlackTextColor}"/>
-                                <pancake:PancakeView WidthRequest="65" CornerRadius="8" HasShadow="False" Padding="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                                <pancake:PancakeView WidthRequest="65" CornerRadius="8" Padding="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
                                 <pancake:PancakeView.BackgroundGradientStops>
                                     <pancake:GradientStopCollection>
                                         <pancake:GradientStop Color="{StaticResource LessonXPSecondColor}" Offset="0" />

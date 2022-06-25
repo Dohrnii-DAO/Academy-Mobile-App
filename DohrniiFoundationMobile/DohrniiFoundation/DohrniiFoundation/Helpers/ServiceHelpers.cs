@@ -280,7 +280,7 @@ namespace DohrniiFoundation.Helpers
                 {
                     if (isHeader)
                     {
-                        httpClient.DefaultRequestHeaders.Add(StringConstant.APIKeyHttpAuthorization, string.Concat(StringConstant.APIBaseBearer, string.Empty, token));
+                        httpClient.DefaultRequestHeaders.Add(StringConstant.APIKeyHttpAuthorization, string.Concat(StringConstant.APIBaseBearer, token));
                     }
                     string baseUrl = StringConstant.APIBaseURL;
                     string serviceUrl = string.Empty;
@@ -304,51 +304,57 @@ namespace DohrniiFoundation.Helpers
                         }
                         else
                         {
-                            switch (response.StatusCode)
+                            result = await response.Content.ReadAsStringAsync();
+                            this.responseModel = new ResponseModel
                             {
-                                case (HttpStatusCode)ResponseStatus.NotAcceptable:
-                                    result = await response.Content.ReadAsStringAsync();
-                                    this.responseModel = new ResponseModel
-                                    {
-                                        IsSuccess = false,
-                                        Data = result
-                                    };
-                                    break;
-                                case (HttpStatusCode)ResponseStatus.BadRequest:
-                                    result = await response.Content.ReadAsStringAsync();
-                                    this.responseModel = new ResponseModel
-                                    {
-                                        IsSuccess = false,
-                                        Data = result
-                                    };
-                                    break;
-                                case (HttpStatusCode)ResponseStatus.Unauthorized:
-                                    result = await response.Content.ReadAsStringAsync();
-                                    this.responseModel = new ResponseModel
-                                    {
-                                        IsSuccess = false,
-                                        Data = result
-                                    };
-                                    break;
-                                case (HttpStatusCode)ResponseStatus.NotFound:
-                                    result = await response.Content.ReadAsStringAsync();
-                                    this.responseModel = new ResponseModel
-                                    {
-                                        IsSuccess = false,
-                                        Data = result
-                                    };
-                                    break;
-                                case HttpStatusCode.BadRequest:
-                                    result = await response.Content.ReadAsStringAsync();
-                                    this.responseModel = new ResponseModel
-                                    {
-                                        IsSuccess = false,
-                                        Data = result
-                                    };
-                                    break;
-                                default:
-                                    break;
-                            }
+                                IsSuccess = false,
+                                Data = result
+                            };
+                            //switch (response.StatusCode)
+                            //{
+                            //    case (HttpStatusCode)ResponseStatus.NotAcceptable:
+                            //        result = await response.Content.ReadAsStringAsync();
+                            //        this.responseModel = new ResponseModel
+                            //        {
+                            //            IsSuccess = false,
+                            //            Data = result
+                            //        };
+                            //        break;
+                            //    case (HttpStatusCode)ResponseStatus.BadRequest:
+                            //        result = await response.Content.ReadAsStringAsync();
+                            //        this.responseModel = new ResponseModel
+                            //        {
+                            //            IsSuccess = false,
+                            //            Data = result
+                            //        };
+                            //        break;
+                            //    case (HttpStatusCode)ResponseStatus.Unauthorized:
+                            //        result = await response.Content.ReadAsStringAsync();
+                            //        this.responseModel = new ResponseModel
+                            //        {
+                            //            IsSuccess = false,
+                            //            Data = result
+                            //        };
+                            //        break;
+                            //    case (HttpStatusCode)ResponseStatus.NotFound:
+                            //        result = await response.Content.ReadAsStringAsync();
+                            //        this.responseModel = new ResponseModel
+                            //        {
+                            //            IsSuccess = false,
+                            //            Data = result
+                            //        };
+                            //        break;
+                            //    case HttpStatusCode.BadRequest:
+                            //        result = await response.Content.ReadAsStringAsync();
+                            //        this.responseModel = new ResponseModel
+                            //        {
+                            //            IsSuccess = false,
+                            //            Data = result
+                            //        };
+                            //        break;
+                            //    default:
+                            //        break;
+                            //}
                         }
                         this.responseModel = new ResponseModel
                         {
@@ -387,7 +393,7 @@ namespace DohrniiFoundation.Helpers
                 {
                     if (isHeader)
                     {
-                        httpClient.DefaultRequestHeaders.Add(StringConstant.APIKeyHttpAuthorization, string.Concat(StringConstant.APIBaseBearer, string.Empty, token));
+                        httpClient.DefaultRequestHeaders.Add(StringConstant.APIKeyHttpAuthorization, string.Concat(StringConstant.APIBaseBearer, token));
                     }
                     string baseUrl = StringConstant.APIBaseURL;
                     string serviceUrl = baseUrl + strMethod;

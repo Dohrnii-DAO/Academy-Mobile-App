@@ -655,8 +655,6 @@
             </Grid>
 
             <view:TabbedView VerticalOptions="EndAndExpand" />
-            <view:NoInternetView IsVisible="{Binding IsInternet}" />
-            <view:Loader IsVisible="{Binding IsLoading}" />
 
             <StackLayout
                 BackgroundColor="{StaticResource PopPageBackgroundColor}"
@@ -692,7 +690,7 @@
                                     Placeholder="Search"
                                     ReturnType="Search"
                                     Text="{Binding SearchQ}"
-                                    TextChangedCommand="{Binding FilterUserCommand}"
+                                    ReturnCommand="{Binding FilterUserCommand}"
                                     VerticalOptions="CenterAndExpand" />
                                 <Image
                                     HorizontalOptions="End"
@@ -735,17 +733,20 @@
                                                 HasShadow="False"
                                                 HorizontalOptions="StartAndExpand">
                                                 <StackLayout HorizontalOptions="CenterAndExpand">
-                                                    <Frame
-                                                        Padding="0"
-                                                        BackgroundColor="{DynamicResource Transparent}"
-                                                        CornerRadius="33"
-                                                        HasShadow="False"
-                                                        HeightRequest="66"
-                                                        HorizontalOptions="CenterAndExpand"
-                                                        IsClippedToBounds="True"
-                                                        WidthRequest="66">
-                                                        <Image Aspect="AspectFill" Source="{Binding Avatar}" />
-                                                    </Frame>
+                                                    <Grid>
+                                                        <Frame
+                                                            Padding="0"
+                                                            BackgroundColor="{DynamicResource Transparent}"
+                                                            CornerRadius="33"
+                                                            HasShadow="False"
+                                                            HeightRequest="66"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            IsClippedToBounds="True"
+                                                            WidthRequest="66">
+                                                            <Image Aspect="AspectFill" Source="{Binding Avatar}" />
+                                                        </Frame>
+                                                        <Image HeightRequest="15" WidthRequest="15" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Margin="0,-5,5,0" Source="tick.png" IsVisible="{Binding IsPendingRequest}" />
+                                                    </Grid>
                                                     <Label
                                                         Margin="0,2,0,0"
                                                         FontFamily="{StaticResource MonumentRegular}"
@@ -754,6 +755,9 @@
                                                         Text="{Binding FirstName}"
                                                         TextColor="{DynamicResource Black}" />
                                                 </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="User_Tapped" NumberOfTapsRequired="1"/>
+                                                </Frame.GestureRecognizers>
                                             </Frame>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
@@ -786,6 +790,10 @@
                     <TapGestureRecognizer Command="{Binding AddFriendCommand}" NumberOfTapsRequired="1" />
                 </StackLayout.GestureRecognizers>
             </StackLayout>
+
+
+            <view:NoInternetView IsVisible="{Binding IsInternet}" />
+            <view:Loader IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

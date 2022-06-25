@@ -18,5 +18,6 @@ namespace DohrniiFoundation.Models.Socials
         [JsonProperty("last_name")]
         public string LastName { get; set; }
         public string Avatar { get; set; }
+        public bool IsPendingRequest { get; set; }
     }
 }

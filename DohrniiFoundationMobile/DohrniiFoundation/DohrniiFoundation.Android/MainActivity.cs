@@ -9,6 +9,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Plugin.Media;
+using Acr.UserDialogs;
 
 namespace DohrniiFoundation.Droid
 {
@@ -38,10 +39,11 @@ namespace DohrniiFoundation.Droid
             AndroidAppLinks.Init(this);
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             CrossMedia.Current.Initialize();
-            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
-            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this);
+            //Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            UserDialogs.Init(this);
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DohrniiFoundation.Models.Socials;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,13 @@ namespace DohrniiFoundation.Views.Socials
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await socialVM.LoadData("Today");
+            await socialVM.InitData();
+        }
+
+        private async void User_Tapped(object sender, EventArgs e)
+        {
+            var user = (AppUser)(sender as Frame).BindingContext;
+            await socialVM.SendFriendRequest(user);
         }
     }
 }

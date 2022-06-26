@@ -47,7 +47,8 @@ namespace DohrniiFoundation.Helpers
         public const string UpdateProfileApiEndPoint = "/api/user/update/";
 
 
-        public const string APIBaseURL = "http://10.0.2.2:8000/backend/api";
+        public const string APIAndroidBaseURL =  "http://10.0.2.2:8000/backend/api";
+        public const string APIiOSBaseURL = "http://127.0.0.1:8000/backend/api";
         public const string APIBaseBearer = "Bearer ";
         public const string LoginEndPoint = "/auth/token/";
         public const string UsersEndPoint = "/users/";

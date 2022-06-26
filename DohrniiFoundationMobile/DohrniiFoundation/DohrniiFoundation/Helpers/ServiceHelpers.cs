@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DohrniiFoundation.Enum;
 using DohrniiFoundation.Models.APIResponseModels;
+using Xamarin.Forms;
 
 namespace DohrniiFoundation.Helpers
 {
@@ -282,7 +283,7 @@ namespace DohrniiFoundation.Helpers
                     {
                         httpClient.DefaultRequestHeaders.Add(StringConstant.APIKeyHttpAuthorization, string.Concat(StringConstant.APIBaseBearer, token));
                     }
-                    string baseUrl = StringConstant.APIBaseURL;
+                    string baseUrl = Device.RuntimePlatform == Device.Android ? StringConstant.APIAndroidBaseURL : StringConstant.APIiOSBaseURL;
                     string serviceUrl = string.Empty;
                     serviceUrl = baseUrl + strMethod;
 
@@ -395,7 +396,7 @@ namespace DohrniiFoundation.Helpers
                     {
                         httpClient.DefaultRequestHeaders.Add(StringConstant.APIKeyHttpAuthorization, string.Concat(StringConstant.APIBaseBearer, token));
                     }
-                    string baseUrl = StringConstant.APIBaseURL;
+                    string baseUrl = Device.RuntimePlatform == Device.Android ? StringConstant.APIAndroidBaseURL : StringConstant.APIiOSBaseURL;
                     string serviceUrl = baseUrl + strMethod;
                     httpClient.Timeout = TimeSpan.FromSeconds(200);
                     var uri = new Uri(serviceUrl);
